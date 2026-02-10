@@ -8,39 +8,40 @@ import React from 'react';
  */
 const ProductCard = ({ item, onPurchase }) => {
   return (
-    <div className="bg-white border border-white/5 rounded-xl overflow-hidden shadow-lg flex flex-col">
+    <div className="bg-white  overflow-hidden shadow-lg flex flex-col">
       
       {/* Product Image Area */}
-      <div className="w-full aspect-video bg-black flex items-center justify-center p-6 relative overflow-hidden">
+      <div className="w-full aspect-video bg-black flex items-center justify-center relative overflow-hidden">
         <img 
           src={item.image} 
           alt={item.title} 
-          className="max-w-full max-h-full object-contain z-10 drop-shadow-2xl"
+          className="w-full max-w-[600px] object-contain z-10 drop-shadow-2xl"
         />
       </div>
 
       {/* Product Details Area */}
-      <div className="p-4 flex flex-col flex-grow">
+      <div className="p-4 flex flex-col flex-grow  p-4">
         {/* Title */}
-        <h3 className="text-black font-bold text-sm md:text-base mb-1 line-clamp-1">
+        <h3 className="text-gray-600 flex justify-baseline font-semibold text-sm md:text-xl mb-1 line-clamp-1">
           {item.title}
         </h3>
         
         {/* Metadata: Price and Stock */}
-        <div className="flex justify-between items-center mt-2">
-          <span className="text-black font-extrabold text-xl leading-none">
+        <div className="flex justify-between items-center mb-3">
+          <span className="text-gray-500 text-md font-semibold leading-none">
             ${item.price} USD
           </span>
           
-          <span className="text-gray-600 text-sm">
+          <span className="text-gray-500 text-md font-semibold">
             In stock
           </span>
         </div>
+        <div className="w-8 h-[2px] bg-gray-200 mb-3"></div>
 
         {/* Purchase Button */}
         <button 
           onClick={() => onPurchase(item)}
-          className="w-full mt-4 bg-primary text-white font-bold py-2.5 rounded-lg shadow-md shadow-primary/20 text-sm"
+          className="w-full mt-4 bg-[var(--color-btn)] hover:bg-[var(--color-btnHover)] text-white font-semibold py-2 rounded-sm shadow-md shadow-primary/20 text-md"
         >
           Purchase
         </button>

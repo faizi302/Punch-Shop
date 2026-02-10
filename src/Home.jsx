@@ -8,12 +8,12 @@ import HotProducts from './sections/HotProducts';
 import Bank from './sections/Bank';
 import Crypto from './sections/Crypto';
 import BestSellers from './sections/BestSellers';
-// import Shopping from './sections/Shopping'; // Uncomment if needed, but matching screenshot arrangement
+import Shopping from './sections/Shopping'; // Uncomment if needed, but matching screenshot arrangement
 import Food from './sections/Food';
 import Social from './sections/Social';
 import Bundles from './sections/Bundles';
 import Support from './sections/Support';
-import FAQ from './sections/FAQ';
+import FAQ from './sections/FAQ'; 
 
 
 const Home = () => {
@@ -32,19 +32,27 @@ const Home = () => {
     <div className="min-h-screen flex flex-col font-sans bg-primary text-white">
       
       {/* 1. HEADER BANNER */}
-      <header className="bg-primary p-6 md:p-10 flex justify-center">
+      <header className="bg-[image:var(--color-mixed)] p-6 md:p-12 flex justify-center">
         <div className="w-full max-w-4xl">
           <img src="src/assets/herologo.gif" alt="Banner" className="w-full h-auto rounded-sm shadow-2xl"/>
         </div>
       </header>
 
       {/* 2. MAIN PUNCH CARD */}
+<<<<<<< HEAD
       <section className="w-full bg-white py-12 flex justify-center">
         <div className="bg-white border border-gray-100 rounded-xl shadow-sm p-6 flex flex-col items-center w-full max-w-[320px] text-center">
           <img src="src/assets/pine_apple.png" alt="Logo" className="w-48 h-auto mb-4"/>
           <div className="w-8 h-[1px] bg-gray-200 mb-6"></div>
           <button className="bg-[#209cee] text-white text-sm font-semibold 
           py-2.5 px-5 rounded-md shadow-sm cursor-pointer" onClick={()=>navigate('/market')}>
+=======
+      <section className="w-full bg-white pt-16 pb-6 flex justify-center">
+        <div className="bg-white  border border-gray-300 rounded-md shadow-sm hover:shadow-[var(--shadow-custom)] p-6 flex flex-col items-center w-full max-w-[350px] text-center transition-shadow duration-300">
+          <img src="src/assets/pine_apple.png" alt="Logo" className="w-[400px] h-auto mb-4"/>
+          <div className="w-8 h-[1px] bg-gray-200 mb-3"></div>
+          <button className="bg-[#1e90ff] text-white text-md font-semibold py-3.5 px-5 rounded-md shadow-sm">
+>>>>>>> origin/shan-branch
             Click to Visit Marketplace (→)
           </button>
         </div>
@@ -52,10 +60,10 @@ const Home = () => {
 
       {/* 3. PRODUCT SECTIONS */}
       <HotProducts openModal={openModal} />
-      <BestSellers openModal={openModal} />
       <Bank openModal={openModal} />
       <Crypto openModal={openModal} />
-      {/* <Shopping openModal={openModal} /> */} {/* Commented to match screenshot arrangement */}
+      <BestSellers openModal={openModal} />
+      <Shopping openModal={openModal} /> 
       <Food openModal={openModal} />
       <Social openModal={openModal} />
       <Bundles openModal={openModal} />
