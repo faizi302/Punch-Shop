@@ -1,6 +1,7 @@
 // Home.jsx
 import React, { useState } from 'react';
 import { ChevronUp, ChevronDown, Send, UserRoundSearch, MessageSquareMore, Star, X } from 'lucide-react';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 // Import all your sections
 import HotProducts from './sections/HotProducts';
@@ -14,11 +15,14 @@ import Bundles from './sections/Bundles';
 import Support from './sections/Support';
 import FAQ from './sections/FAQ';
 
-const Home = () => {
-  const [showMenu, setShowMenu] = useState(true);
-  const [selectedProduct, setSelectedProduct] = useState(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
+const Home = () => {
+    const [showMenu, setShowMenu] = useState(true);
+    const [selectedProduct, setSelectedProduct] = useState(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const navigate = useNavigate();
+    
   const openModal = (product) => {
     setSelectedProduct(product);
     setIsModalOpen(true);
@@ -39,7 +43,8 @@ const Home = () => {
         <div className="bg-white border border-gray-100 rounded-xl shadow-sm p-6 flex flex-col items-center w-full max-w-[320px] text-center">
           <img src="src/assets/pine_apple.png" alt="Logo" className="w-48 h-auto mb-4"/>
           <div className="w-8 h-[1px] bg-gray-200 mb-6"></div>
-          <button className="bg-[#209cee] text-white text-sm font-semibold py-2.5 px-5 rounded-md shadow-sm">
+          <button className="bg-[#209cee] text-white text-sm font-semibold 
+          py-2.5 px-5 rounded-md shadow-sm cursor-pointer" onClick={()=>navigate('/market')}>
             Click to Visit Marketplace (→)
           </button>
         </div>

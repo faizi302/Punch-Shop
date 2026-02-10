@@ -1,13 +1,26 @@
 @import "tailwindcss";
 
+/* Tailwind theme tokens */
 @theme {
   --color-primary: #7957d5;
   --color-primary-dark: #6244ad;
-  --color-support-bg: #167df0;     /* New: blue background for Support & FAQ */
+  --color-support-bg: #167df0;
+
+  --color-mheader: #343541;
+  --color-market: #0f1720;
+  --color-mcard: #1b1f26;
+  --color-mfooter: #0b0d10;
+  --color-mbutton: #ffca4f;
+  
 }
 
+/* Global CSS variables */
 :root {
-  background-color: #f5f5f5;
+  --background-color: #f5f5f5;
+}
+
+body {
   margin: 0;
   padding: 0;
+  background-color: var(--background-color);
 }
