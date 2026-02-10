@@ -39,20 +39,12 @@ const Home = () => {
       </header>
 
       {/* 2. MAIN PUNCH CARD */}
-<<<<<<< HEAD
-      <section className="w-full bg-white py-12 flex justify-center">
-        <div className="bg-white border border-gray-100 rounded-xl shadow-sm p-6 flex flex-col items-center w-full max-w-[320px] text-center">
-          <img src="src/assets/pine_apple.png" alt="Logo" className="w-48 h-auto mb-4"/>
-          <div className="w-8 h-[1px] bg-gray-200 mb-6"></div>
-          <button className="bg-[#209cee] text-white text-sm font-semibold 
-          py-2.5 px-5 rounded-md shadow-sm cursor-pointer" onClick={()=>navigate('/market')}>
-=======
       <section className="w-full bg-white pt-16 pb-6 flex justify-center">
         <div className="bg-white  border border-gray-300 rounded-md shadow-sm hover:shadow-[var(--shadow-custom)] p-6 flex flex-col items-center w-full max-w-[350px] text-center transition-shadow duration-300">
           <img src="src/assets/pine_apple.png" alt="Logo" className="w-[400px] h-auto mb-4"/>
           <div className="w-8 h-[1px] bg-gray-200 mb-3"></div>
-          <button className="bg-[#1e90ff] text-white text-md font-semibold py-3.5 px-5 rounded-md shadow-sm">
->>>>>>> origin/shan-branch
+          <button className="bg-[#1e90ff] text-white text-md font-semibold
+           py-3.5 px-5 rounded-md shadow-sm cursor-pointer" onClick={()=>navigate('/market')}>
             Click to Visit Marketplace (→)
           </button>
         </div>
