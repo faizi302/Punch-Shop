@@ -442,7 +442,7 @@ const Market = () => {
       {/* STEP 4: QR Modal */}
       {step === 4 && (
         <div className="fixed inset-0 bg-gray-100 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-2xl p-8 w-full max-w-md relative shadow-2xl">
+          <div className="bg-white rounded-2xl p-8 w-full max-w-md relative shadow-2xl max-h-[80vh] overflow-y-auto">
             <button 
               onClick={() => setStep(2)}
               className="absolute top-6 left-6 text-blue-600 hover:text-blue-700 text-sm font-medium"
