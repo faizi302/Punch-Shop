@@ -16,7 +16,7 @@ const Bundles = ({ openModal }) => {
         </h2>
         
         {/* Responsive Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] justify-center gap-8">
           {sectionData.map((product) => (
             <ProductCard 
               key={product.id} 
