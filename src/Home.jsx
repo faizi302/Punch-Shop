@@ -82,39 +82,7 @@ const Home = () => {
         </div>
       </footer>
 
-      {/* 6. PURCHASE MODAL */}
-      {isModalOpen && selectedProduct && (
-        <div className="fixed inset-0 bg-[#030712b3]/90 flex items-center justify-center z-[100] p-4 backdrop-blur-sm">
-          <div className="bg-white text-black border border-white/10 w-full max-w-md rounded-md p-6 relative">
-            <button onClick={() => setIsModalOpen(false)} className="absolute right-4 top-4 text-gray-400 cursor-pointer">
-              <X size={24} />
-            </button>
-            <div className="flex justify-center flex-col items-center gap-1">
-              <h2 className="text-xl font-bold mb-1">{selectedProduct.title}</h2>
-              <p className="text-xs text-gray-500 mb-6 font-mono">ID: {selectedProduct.id}</p>
-            </div>
 
-            <div className="flex justify-center">
-              <div className="w-full h-[2px] bg-gray-200 mb-3 justify-center"></div>
-            </div>
-
-            <div className="space-y-4">
-              <div className="flex justify-between border-b border-white/5 pb-2">
-                <span className="text-gray-400">Price</span>
-                <span className="text-green-400 font-bold">${selectedProduct.price} USD</span>
-              </div>
-              <div className="flex justify-between border-b border-white/5 pb-2">
-                <span className="text-gray-400">Availability</span>
-                <span className="text-white">{selectedProduct.stock} items left</span>
-              </div>
-            </div>
-
-            <button className="w-full bg-primary text-white py-4 rounded-xl font-bold mt-8 hover:opacity-90 transition-opacity">
-              Confirm & Pay
-            </button>
-          </div>
-        </div>
-      )} 
 
       {/* 7. FLOATING MENU */}
       <div className="fixed right-8 bottom-6 flex flex-col gap-3 items-center z-50">
