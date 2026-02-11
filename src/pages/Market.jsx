@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import MarketCard from '../components/MarketCard';
 import { Send, Headphones, LogIn, Star, X, MessageSquareMore, Copy, Check } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import MarketHeader from '../components/MarketHeader';
 
 const Market = () => {
   const [visibleCount, setVisibleCount] = useState(10);
@@ -249,20 +250,7 @@ const Market = () => {
   return (
     <div className="min-h-screen bg-[var(--color-market)] text-white flex flex-col">
       {/* Sticky Header */}
-      <header className="sticky top-0 z-40 bg-[var(--color-mheader)] py-4 px-6 flex justify-between items-center">
-        <img src="src/assets/pine_apple.png" alt="Punch" className="h-10" />
-        <div className="flex gap-6 text-sm font-medium">
-          <Link to="https://t.me/mvpwins" className="flex items-center gap-2 hover:text-gray-300 transition-colors">
-            <Send size={16} /> Telegram
-          </Link>
-          <Link to="/support" className="flex items-center gap-2 hover:text-gray-300 transition-colors">
-            <Headphones size={16} /> Support
-          </Link>
-          <Link to="/login" className="flex items-center gap-2 hover:text-gray-300 transition-colors">
-            <LogIn size={16} /> Login
-          </Link>
-        </div>
-      </header>
+      <MarketHeader/>
 
       {/* Main Content with proper padding */}
       <main className="flex-1 px-4 py-6">
