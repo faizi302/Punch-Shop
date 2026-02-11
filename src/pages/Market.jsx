@@ -9,369 +9,165 @@ const Market = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [showPurchaseModal, setShowPurchaseModal] = useState(false);
   const [showReviewsModal, setShowReviewsModal] = useState(false);
-  const [showMenu, setShowMenu] = useState(true);
+  // const [showMenu, setShowMenu] = useState(true);
 
   // Comprehensive market data array
   const marketData = [
     {
       id: 'prod1',
-      title: 'Trust Wallet Login',
-      description: 'Comes with instructions. Estimated Balance: $3,800',
-      price: '400.00',
-      image: 'src/assets/trustwallet.png',
-      isHot: false,
+      title: 'Mastercard CC',
+      description: 'CC with $8,000 Balance.',
+      price: '150.00',
+      image: 'src/assets/Hot_products/masetcard.webp',
+      isHot: true,
       isTrusted: false,
-      sellerAvatar: 'src/assets/punch-avatar.png',
-      sellerName: 'punch.atshop.io',
+      sellerAvatar: 'src/assets/reviews/rev-img.jpg',
+      sellerName: 'Brainsclub',
       reviewCount: 1331,
     },
     {
       id: 'prod2',
-      title: 'VISA CC',
+      title: 'Mastercard CC',
       description: 'CC with $8,000 Balance.',
       price: '150.00',
-      image: 'src/assets/visa.png',
+      image: 'src/assets/Hot_products/visa.gif',
       isHot: true,
       isTrusted: false,
-      sellerAvatar: 'src/assets/punch-avatar.png',
-      sellerName: 'punch.atshop.io',
+      sellerAvatar: 'src/assets/reviews/rev-img2.jpg',
+      sellerName: 'Brainsclub',
       reviewCount: 1331,
     },
     {
       id: 'prod3',
-      title: 'Citi Bank Login',
-      description: 'Citi Bank login with $8,000 Balance. Includes CC, ID, and Login',
-      price: '350.00',
-      image: 'src/assets/citi.png',
+      title: 'Visa CC',
+      description: 'Comes with instructions. Estimated Balance: $3,800',
+      price: '400.00',
+      image: 'src/assets/Hot_products/visa.gif',
       isHot: false,
-      isTrusted: true,
-      sellerAvatar: 'src/assets/punch-avatar.png',
+      isTrusted: false,
+      sellerAvatar: 'src/assets/reviews/rev-img3.avif',
       sellerName: 'punch.atshop.io',
       reviewCount: 1331,
     },
     {
       id: 'prod4',
-      title: 'Wells Fargo Bank Login',
-      description: 'WF Bank Login with $2,100 balance. Includes CC, ID and Login',
-      price: '190.00',
-      image: 'src/assets/wellsfargo.png',
+      title: 'Mastercard CC',
+      description: 'CC with $8,000 Balance.',
+      price: '150.00',
+      image: 'src/assets/Hot_products/chime.gif',
       isHot: true,
-      isTrusted: true,
-      sellerAvatar: 'src/assets/punch-avatar.png',
-      sellerName: 'punch.atshop.io',
+      isTrusted: false,
+      sellerAvatar: 'src/assets/reviews/rev-img.jpg',
+      sellerName: 'Brainsclub',
       reviewCount: 1331,
     },
     {
       id: 'prod5',
-      title: 'SoFi Bank Login',
-      description: 'SoFi Bank Login with $1,650 Balance. Includes CC, ID and Login',
-      price: '80.00',
-      image: 'src/assets/sofi.png',
+      title: 'Visa CC',
+      description: 'Comes with instructions. Estimated Balance: $3,800',
+      price: '400.00',
+      image: 'src/assets/Hot_products/visa.gif',
       isHot: false,
       isTrusted: false,
-      sellerAvatar: 'src/assets/tokyo-avatar.png',
-      sellerName: 'TokyoDrift92',
-      reviewCount: 4539,
+      sellerAvatar: 'src/assets/reviews/rev-img2.jpg',
+      sellerName: 'punch.atshop.io',
+      reviewCount: 1331,
     },
     {
       id: 'prod6',
-      title: 'MasterCard CC',
-      description: 'CC with $1,200 Balance.',
-      price: '65.00',
-      image: 'src/assets/mastercard.png',
-      isHot: true,
+      title: 'Visa CC',
+      description: 'Comes with instructions. Estimated Balance: $3,800',
+      price: '400.00',
+      image: 'src/assets/Hot_products/visa.gif',
+      isHot: false,
       isTrusted: false,
-      sellerAvatar: 'src/assets/brians-avatar.png',
-      sellerName: 'briansclub',
-      reviewCount: 827,
+      sellerAvatar: 'src/assets/reviews/rev-img3.avif',
+      sellerName: 'punch.atshop.io',
+      reviewCount: 1331,
     },
     {
       id: 'prod7',
-      title: 'VISA CC',
-      description: 'CC with $2,000 Balance.',
-      price: '100.00',
-      image: 'src/assets/visa.png',
-      isHot: true,
+      title: 'Visa CC',
+      description: 'Comes with instructions. Estimated Balance: $3,800',
+      price: '400.00',
+      image: 'src/assets/Hot_products/visa.gif',
+      isHot: false,
       isTrusted: false,
-      sellerAvatar: 'src/assets/cvv-avatar.png',
-      sellerName: 'CVV-KINGZ',
-      reviewCount: 1264,
+      sellerAvatar: 'src/assets/reviews/rev-img.jpg',
+      sellerName: 'punch.atshop.io',
+      reviewCount: 1331,
     },
     {
       id: 'prod8',
-      title: 'ID Verified Cash App',
-      description: 'Verified Cash App with $500 Balance.',
-      price: '75.00',
-      image: 'src/assets/cashapp.png',
+      title: 'Visa CC',
+      description: 'Comes with instructions. Estimated Balance: $3,800',
+      price: '400.00',
+      image: 'src/assets/Hot_products/visa.gif',
       isHot: false,
-      isTrusted: true,
-      sellerAvatar: 'src/assets/epic-avatar.png',
-      sellerName: 'EpicByteSeller',
-      reviewCount: 2284,
+      isTrusted: false,
+      sellerAvatar: 'src/assets/reviews/rev-img2.jpg',
+      sellerName: 'punch.atshop.io',
+      reviewCount: 1331,
     },
     {
       id: 'prod9',
-      title: 'ID Verified Venmo',
-      description: 'ID verified with a CC attached. Estimated Balance: $1,400',
-      price: '95.00',
-      image: 'src/assets/venmo.png',
-      isHot: false,
+      title: 'Wells Fargo Bank Login',
+      description: 'WF Bank Login with $2,100 balance. Includes CC, ID and Login',
+      price: '190.00',
+      image: 'src/assets/Hot_products/masetcard.webp',
+      isHot: true,
       isTrusted: true,
-      sellerAvatar: 'src/assets/epic-avatar.png',
-      sellerName: 'EpicByteSeller',
-      reviewCount: 2284,
+      sellerAvatar: 'src/assets/reviews/rev-img3.avif',
+      sellerName: 'punch.atshop.io',
+      reviewCount: 1331,
     },
     {
       id: 'prod10',
-      title: 'PayPal Business Account',
-      description: 'Verified PayPal Business with $5,200 Balance',
-      price: '280.00',
-      image: 'src/assets/paypal.png',
+      title: 'Wells Fargo Bank Login',
+      description: 'WF Bank Login with $2,100 balance. Includes CC, ID and Login',
+      price: '190.00',
+      image: 'src/assets/Hot_products/masetcard.webp',
       isHot: true,
-      isTrusted: false,
-      sellerAvatar: 'src/assets/punch-avatar.png',
+      isTrusted: true,
+      sellerAvatar: 'src/assets/reviews/rev-img.jpg',
       sellerName: 'punch.atshop.io',
       reviewCount: 1331,
     },
     {
       id: 'prod11',
-      title: 'Bank of America Login',
-      description: 'BOA Login with $6,500 Balance. Includes CC, ID and Login',
-      price: '320.00',
-      image: 'src/assets/boa.png',
-      isHot: false,
+      title: 'Wells Fargo Bank Login',
+      description: 'WF Bank Login with $2,100 balance. Includes CC, ID and Login',
+      price: '190.00',
+      image: 'src/assets/Hot_products/visa.gif',
+      isHot: true,
       isTrusted: true,
-      sellerAvatar: 'src/assets/punch-avatar.png',
+      sellerAvatar: 'src/assets/reviews/rev-img2.jpg',
       sellerName: 'punch.atshop.io',
       reviewCount: 1331,
     },
     {
       id: 'prod12',
-      title: 'Chase Bank Login',
-      description: 'Chase Bank login with $4,200 Balance. Full access included',
-      price: '240.00',
-      image: 'src/assets/chase.png',
+      title: 'Wells Fargo Bank Login',
+      description: 'WF Bank Login with $2,100 balance. Includes CC, ID and Login',
+      price: '190.00',
+      image: 'src/assets/Hot_products/chime.gif',
       isHot: true,
-      isTrusted: false,
-      sellerAvatar: 'src/assets/tokyo-avatar.png',
-      sellerName: 'TokyoDrift92',
-      reviewCount: 4539,
+      isTrusted: true,
+      sellerAvatar: 'src/assets/reviews/rev-img3.avif',
+      sellerName: 'punch.atshop.io',
+      reviewCount: 1331,
     },
     {
       id: 'prod13',
-      title: 'American Express CC',
-      description: 'AMEX CC with $3,500 Balance.',
-      price: '180.00',
-      image: 'src/assets/amex.png',
-      isHot: false,
-      isTrusted: false,
-      sellerAvatar: 'src/assets/cvv-avatar.png',
-      sellerName: 'CVV-KINGZ',
-      reviewCount: 1264,
-    },
-    {
-      id: 'prod14',
-      title: 'Discover CC',
-      description: 'Discover card with $2,800 Balance.',
-      price: '140.00',
-      image: 'src/assets/discover.png',
-      isHot: true,
-      isTrusted: false,
-      sellerAvatar: 'src/assets/brians-avatar.png',
-      sellerName: 'briansclub',
-      reviewCount: 827,
-    },
-    {
-      id: 'prod15',
-      title: 'Coinbase Account',
-      description: 'Verified Coinbase with $2,100 in crypto assets',
-      price: '210.00',
-      image: 'src/assets/coinbase.png',
-      isHot: false,
-      isTrusted: true,
-      sellerAvatar: 'src/assets/epic-avatar.png',
-      sellerName: 'EpicByteSeller',
-      reviewCount: 2284,
-    },
-    {
-      id: 'prod16',
-      title: 'MetaMask Wallet',
-      description: 'MetaMask with ETH and tokens. Estimated: $1,900',
+      title: 'Wells Fargo Bank Login',
+      description: 'WF Bank Login with $2,100 balance. Includes CC, ID and Login',
       price: '190.00',
-      image: 'src/assets/metamask.png',
-      isHot: true,
-      isTrusted: false,
-      sellerAvatar: 'src/assets/tokyo-avatar.png',
-      sellerName: 'TokyoDrift92',
-      reviewCount: 4539,
-    },
-    {
-      id: 'prod17',
-      title: 'Zelle Account',
-      description: 'Active Zelle account with $800 Balance',
-      price: '85.00',
-      image: 'src/assets/zelle.png',
-      isHot: false,
-      isTrusted: false,
-      sellerAvatar: 'src/assets/punch-avatar.png',
-      sellerName: 'punch.atshop.io',
-      reviewCount: 1331,
-    },
-    {
-      id: 'prod18',
-      title: 'Apple Pay Account',
-      description: 'Apple Pay with linked cards. $1,500 available',
-      price: '125.00',
-      image: 'src/assets/applepay.png',
+      image: 'src/assets/Hot_products/visa.gif',
       isHot: true,
       isTrusted: true,
-      sellerAvatar: 'src/assets/epic-avatar.png',
-      sellerName: 'EpicByteSeller',
-      reviewCount: 2284,
-    },
-    {
-      id: 'prod19',
-      title: 'Google Pay Account',
-      description: 'Google Pay with $900 Balance and cards',
-      price: '95.00',
-      image: 'src/assets/googlepay.png',
-      isHot: false,
-      isTrusted: false,
-      sellerAvatar: 'src/assets/cvv-avatar.png',
-      sellerName: 'CVV-KINGZ',
-      reviewCount: 1264,
-    },
-    {
-      id: 'prod20',
-      title: 'Stripe Account',
-      description: 'Business Stripe account with $3,200 Balance',
-      price: '260.00',
-      image: 'src/assets/stripe.png',
-      isHot: true,
-      isTrusted: false,
-      sellerAvatar: 'src/assets/punch-avatar.png',
+      sellerAvatar: 'src/assets/reviews/rev-img.jpg',
       sellerName: 'punch.atshop.io',
       reviewCount: 1331,
-    },
-    {
-      id: 'prod21',
-      title: 'Chime Bank Login',
-      description: 'Chime Bank account with $1,100 Balance',
-      price: '110.00',
-      image: 'src/assets/chime.png',
-      isHot: false,
-      isTrusted: false,
-      sellerAvatar: 'src/assets/tokyo-avatar.png',
-      sellerName: 'TokyoDrift92',
-      reviewCount: 4539,
-    },
-    {
-      id: 'prod22',
-      title: 'Ally Bank Login',
-      description: 'Ally Bank with $2,800 Balance. Full access',
-      price: '175.00',
-      image: 'src/assets/ally.png',
-      isHot: true,
-      isTrusted: false,
-      sellerAvatar: 'src/assets/brians-avatar.png',
-      sellerName: 'briansclub',
-      reviewCount: 827,
-    },
-    {
-      id: 'prod23',
-      title: 'Capital One Login',
-      description: 'Capital One account with $3,600 Balance',
-      price: '220.00',
-      image: 'src/assets/capitalone.png',
-      isHot: false,
-      isTrusted: true,
-      sellerAvatar: 'src/assets/epic-avatar.png',
-      sellerName: 'EpicByteSeller',
-      reviewCount: 2284,
-    },
-    {
-      id: 'prod24',
-      title: 'US Bank Login',
-      description: 'US Bank login with $4,900 Balance',
-      price: '285.00',
-      image: 'src/assets/usbank.png',
-      isHot: true,
-      isTrusted: false,
-      sellerAvatar: 'src/assets/punch-avatar.png',
-      sellerName: 'punch.atshop.io',
-      reviewCount: 1331,
-    },
-    {
-      id: 'prod25',
-      title: 'PNC Bank Login',
-      description: 'PNC Bank with $2,300 Balance. Includes CC',
-      price: '165.00',
-      image: 'src/assets/pnc.png',
-      isHot: false,
-      isTrusted: false,
-      sellerAvatar: 'src/assets/tokyo-avatar.png',
-      sellerName: 'TokyoDrift92',
-      reviewCount: 4539,
-    },
-    {
-      id: 'prod26',
-      title: 'TD Bank Login',
-      description: 'TD Bank account with $3,100 Balance',
-      price: '195.00',
-      image: 'src/assets/tdbank.png',
-      isHot: true,
-      isTrusted: false,
-      sellerAvatar: 'src/assets/cvv-avatar.png',
-      sellerName: 'CVV-KINGZ',
-      reviewCount: 1264,
-    },
-    {
-      id: 'prod27',
-      title: 'Regions Bank Login',
-      description: 'Regions Bank with $1,800 Balance',
-      price: '130.00',
-      image: 'src/assets/regions.png',
-      isHot: false,
-      isTrusted: true,
-      sellerAvatar: 'src/assets/epic-avatar.png',
-      sellerName: 'EpicByteSeller',
-      reviewCount: 2284,
-    },
-    {
-      id: 'prod28',
-      title: 'Fifth Third Bank Login',
-      description: 'Fifth Third Bank with $2,600 Balance',
-      price: '170.00',
-      image: 'src/assets/fifththird.png',
-      isHot: true,
-      isTrusted: false,
-      sellerAvatar: 'src/assets/brians-avatar.png',
-      sellerName: 'briansclub',
-      reviewCount: 827,
-    },
-    {
-      id: 'prod29',
-      title: 'Navy Federal Login',
-      description: 'Navy Federal Credit Union with $5,500 Balance',
-      price: '310.00',
-      image: 'src/assets/navyfederal.png',
-      isHot: false,
-      isTrusted: true,
-      sellerAvatar: 'src/assets/punch-avatar.png',
-      sellerName: 'punch.atshop.io',
-      reviewCount: 1331,
-    },
-    {
-      id: 'prod30',
-      title: 'USAA Bank Login',
-      description: 'USAA Bank account with $4,400 Balance',
-      price: '265.00',
-      image: 'src/assets/usaa.png',
-      isHot: true,
-      isTrusted: false,
-      sellerAvatar: 'src/assets/epic-avatar.png',
-      sellerName: 'EpicByteSeller',
-      reviewCount: 2284,
     },
   ];
 
@@ -393,9 +189,9 @@ const Market = () => {
     <div className="min-h-screen bg-[var(--color-market)] text-white flex flex-col">
       {/* Sticky Header */}
       <header className="sticky top-0 z-40 bg-[var(--color-mheader)] py-4 px-6 flex justify-between items-center">
-        <img src="src/assets/punch-logo.png" alt="Punch" className="h-8" />
+        <img src="src/assets/pine_apple.png" alt="Punch" className="h-10" />
         <div className="flex gap-6 text-sm font-medium">
-          <Link to="/telegram" className="flex items-center gap-2 hover:text-gray-300 transition-colors">
+          <Link to="https://t.me/mvpwins" className="flex items-center gap-2 hover:text-gray-300 transition-colors">
             <Send size={16} /> Telegram
           </Link>
           <Link to="/support" className="flex items-center gap-2 hover:text-gray-300 transition-colors">
@@ -406,6 +202,7 @@ const Market = () => {
           </Link>
         </div>
       </header>
+
 
       {/* Main Content with proper padding */}
       <main className="flex-1 px-4 py-6">
@@ -434,7 +231,7 @@ const Market = () => {
       )}
 
       {/* Footer */}
-      <footer className="bg-[var(--color-mfooter)] py-4 px-6 text-center text-gray-500 text-sm">
+      <footer className="bg-[var(--color-mfooter)] py-4 px-6 text-md text-center text-gray-400 text-sm">
         © The punchs.io website is operated by GWD Processing FZC00.
       </footer>
 
@@ -501,31 +298,12 @@ const Market = () => {
       )}
 
       {/* Floating Menu */}
-      <div className="fixed right-6 bottom-6 flex flex-col gap-3 items-center z-50">
-        {showMenu && (
-          <>
-            <button 
-              onClick={() => setShowMenu(false)} 
-              className="bg-gray-700 hover:bg-gray-600 p-3 rounded-full shadow-lg transition-colors"
-            >
-              <ChevronDown size={20}/>
-            </button>
-            <button className="bg-[#41b1e6] hover:bg-[#3aa0d5] p-3 rounded-full shadow-lg transition-colors">
-              <Send size={20}/>
-            </button>
-            <button className="bg-purple-600 hover:bg-purple-700 p-3 rounded-full shadow-lg transition-colors">
-              <UserRoundSearch size={20}/>
-            </button>
-          </>
-        )}
-        {!showMenu && (
-          <button 
-            onClick={() => setShowMenu(true)} 
-            className="bg-gray-700 hover:bg-gray-600 p-3 rounded-full shadow-lg transition-colors"
-          >
-            <ChevronUp size={20}/>
-          </button>
-        )}
+      <div className="fixed right-8 bottom-20 flex flex-col gap-3 items-center z-50">
+        <button className="bg-[#601db2] hover:bg-[#601db2] p-4 rounded-full shadow-xl transition-colors">
+          <img src='src/assets/float-img.png' className="w-8 h-8" />
+        </button>
+      </div>
+      <div className="fixed right-6 bottom-6 flex flex-col gap-3 items-center size-10 z-50">
         <button className="bg-[#2c7cf6] hover:bg-[#1e6ee6] p-4 rounded-full shadow-xl transition-colors">
           <MessageSquareMore size={24}/>
         </button>

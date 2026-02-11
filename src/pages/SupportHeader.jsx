@@ -46,11 +46,11 @@ const SupportHeader = () => {
   return (
     <div className="min-h-screen bg-[var(--color-market)] text-white flex flex-col">
       {/* Header with Go Back button */}
-      <header className="py-4 px-6 flex justify-between items-center">
-        <img src="src/assets/punch-logo.png" alt="Punch" className="h-8" />
-        <Link 
-          to="/market" 
-          className="text-white hover:text-[var(--color-mbutton)] transition-colors text-sm font-medium"
+      <header className="py-6 px-6 flex justify-between items-center bg-[#1b143d] mb-3">
+        <img src="src/assets/pine_apple.png" alt="Punch" className="h-10" />
+        <Link
+          to="/market"
+          className="text-white hover:text-[var(--color-mbutton)] transition-colors text-sm "
         >
           Go Back to Marketplace
         </Link>
@@ -61,12 +61,12 @@ const SupportHeader = () => {
         <h1 className="text-white font-bold text-4xl text-center mb-8">24/7 Support</h1>
 
         {/* Telegram Contact Box */}
-        <div className="bg-purple-900/40 border border-purple-700/50 rounded-2xl p-6 mb-8 text-center">
+        <div className="bg-[#2a2172] border border-[#2a2172] rounded-2xl p-6 mb-8 text-center">
           <p className="text-white mb-2">
             <span className="font-semibold">Telegram:</span>{' '}
-            <a 
-              href="https://t.me/fnvpwins" 
-              target="_blank" 
+            <a
+              href="https://t.me/fnvpwins"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-[var(--color-mbutton)] hover:underline"
             >
@@ -83,18 +83,18 @@ const SupportHeader = () => {
           <h2 className="text-white font-bold text-2xl mb-4">FAQ</h2>
           <div className="space-y-3">
             {faqData.map((faq) => (
-              <div 
-                key={faq.id} 
-                className="bg-purple-900/40 border border-purple-700/50 rounded-xl overflow-hidden"
+              <div
+                key={faq.id}
+                className="bg-[#2a2172] border border-[#2a2172] rounded-xl overflow-hidden"
               >
                 <button
                   onClick={() => toggleFaq(faq.id)}
-                  className="w-full text-left p-4 font-semibold text-white hover:bg-purple-800/30 transition-colors"
+                  className="w-full text-left p-4 font-semibold text-white hover:bg-[#352a86] transition-colors"
                 >
                   {faq.question}
                 </button>
                 {openFaq === faq.id && (
-                  <div className="px-4 pb-4 text-gray-300 text-sm">
+                  <div className="px-4 mt-2 pb-4 text-gray-300 text-sm">
                     {faq.answer}
                   </div>
                 )}
@@ -105,22 +105,27 @@ const SupportHeader = () => {
 
         {/* Message Support Button */}
         <div className="text-center">
-          <p className="text-gray-400 mb-4">Need more help?</p>
-          <button className="bg-[var(--color-mbutton)] text-black font-bold py-3 px-8 rounded-lg hover:opacity-90 transition-opacity shadow-lg">
+          <p className="text-gray-300 mb-4">Need more help?</p>
+          <button className="bg-[var(--color-mbutton)] text-black font-semibold py-2 px-6 rounded-lg hover:opacity-90 transition-opacity shadow-lg">
             Message Support
           </button>
         </div>
       </main>
 
-      {/* Footer */}
-      <footer className="py-4 px-6 text-center text-gray-500 text-sm">
-        © 2025 Punch Marketplace. All rights reserved.
+      <footer className="py-4 px-6 bg-[#1b143d] text-amber-300 mt-2 text-sm font-bold">
+        ©2025 Punch Marketplace. All rights reserved.
       </footer>
 
       {/* Floating Support Button */}
+      <div className="fixed right-8 bottom-24 flex flex-col gap-3 items-center z-50">
+        <button className="bg-[#601db2] hover:bg-[#601db2] p-4 rounded-full shadow-xl transition-colors">
+          <img src='src/assets/float-img.png' className="w-7 h-7" />
+        </button>
+      </div>
+
       <div className="fixed right-6 bottom-6 z-50">
         <button className="bg-[#2c7cf6] hover:bg-[#1e6ee6] p-4 rounded-full shadow-xl transition-colors">
-          <MessageSquareMore size={24}/>
+          <MessageSquareMore size={24} />
         </button>
       </div>
     </div>
