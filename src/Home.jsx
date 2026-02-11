@@ -1,7 +1,7 @@
 // Home.jsx
 import React, { useState } from 'react';
 import { ChevronUp, ChevronDown, Send, UserRoundSearch, MessageSquareMore, Star, X } from 'lucide-react';
-import { NavLink, useNavigate ,useParams } from 'react-router-dom';
+import { NavLink, useNavigate, useParams } from 'react-router-dom';
 
 // Import all your sections
 import HotProducts from './sections/HotProducts';
@@ -13,19 +13,19 @@ import Food from './sections/Food';
 import Social from './sections/Social';
 import Bundles from './sections/Bundles';
 import Support from './sections/Support';
-import FAQ from './sections/FAQ'; 
+import FAQ from './sections/FAQ';
 import ProductSelectionModal from './components/ProductSelectionModal';
 
 
 const Home = () => {
-    const [showMenu, setShowMenu] = useState(true);
-    const [selectedProduct, setSelectedProduct] = useState(null);
-    // const [isModalOpen, setIsModalOpen] = useState(false);
-    const closeProductModal = () => navigate('/');
+  const [showMenu, setShowMenu] = useState(true);
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  // const [isModalOpen, setIsModalOpen] = useState(false);
+  const closeProductModal = () => navigate('/');
 
-    const {id} = useParams();
-    const navigate = useNavigate();
-    
+  const { id } = useParams();
+  const navigate = useNavigate();
+
   const openModal = (product) => {
     setSelectedProduct(product);
     setIsModalOpen(true);
@@ -47,7 +47,7 @@ const Home = () => {
           <img src="src/assets/pine_apple.png" alt="Logo" className="w-[400px] h-auto mb-4" />
           <div className="w-8 h-[1px] bg-gray-200 mb-3"></div>
           <button className="bg-[#1e90ff] text-white text-md font-semibold
-           py-3.5 px-5 rounded-md shadow-sm cursor-pointer" onClick={()=>navigate('/market')}>
+           py-3.5 px-5 rounded-md shadow-sm cursor-pointer" onClick={() => navigate('/market')}>
             Click to Visit Marketplace (→)
           </button>
         </div>
@@ -67,10 +67,10 @@ const Home = () => {
       <Support />
       <FAQ />
 
-      {id && <ProductSelectionModal productId={id} onClose={closeProductModal} />  }
+      {id && <ProductSelectionModal productId={id} onClose={closeProductModal} />}
 
       {/* 5. FOOTER */}
-      <footer className="bg-white border-t border-gray-100 py-14 px-12 text-black flex flex-col md:flex-row justify-between items-center gap-4">
+      <footer className="bg-white border-t border-gray-100 py-10 px-12 text-black flex flex-col md:flex-row justify-between items-center gap-4">
         <div className="text-gray-400 text-md">© PUNCH 2026</div>
         <div className="flex items-center gap-2 text-yellow-400">
           <ul className='flex gap-4 text-[#7958db] text-sm font-light mr-3'>
@@ -83,7 +83,7 @@ const Home = () => {
       </footer>
 
       {/* 6. PURCHASE MODAL */}
-      {isModalOpen && selectedProduct && (
+      {/* {isModalOpen && selectedProduct && (
         <div className="fixed inset-0 bg-[#030712b3]/90 flex items-center justify-center z-[100] p-4 backdrop-blur-sm">
           <div className="bg-white text-black border border-white/10 w-full max-w-md rounded-md p-6 relative">
             <button onClick={() => setIsModalOpen(false)} className="absolute right-4 top-4 text-gray-400 cursor-pointer">
@@ -114,22 +114,24 @@ const Home = () => {
             </button>
           </div>
         </div>
-      )} 
+      )}  */}
 
       {/* 7. FLOATING MENU */}
-      <div className="fixed right-8 bottom-6 flex flex-col gap-3 items-center z-50">
-        {showMenu && (
-          <>
-            <button onClick={() => setShowMenu(false)} className="bg-gray-500/50 hover:bg-white cursor-pointer hover:text-black p-3 flex items-center justify-center size-16 rounded-full shadow-lg"><ChevronDown size={30} /></button>
-            <button className="bg-[#41b1e6] hover:bg-white hover:text-[#41b1e6] cursor-pointer p-3 rounded-full flex items-center justify-center size-16 shadow-lg"><Send size={30} /></button>
-            <button className="bg-primary hover:bg-white hover:text-primary p-3 cursor-pointer rounded-full flex items-center justify-center size-16 shadow-lg"><UserRoundSearch size={30} /></button>
-          </>
-        )}
-        {!showMenu && (
-          <button onClick={() => setShowMenu(true)} className="bg-gray-500/50 hover:bg-white cursor-pointer hover:text-black p-3 flex items-center justify-center size-16 rounded-full shadow-lg"><ChevronUp size={30} /></button>
-        )}
-        <button className="bg-[#2c7cf6] p-5 cursor-pointer rounded-full shadow-xl"><MessageSquareMore size={24} /></button>
-      </div>
+            <div className="fixed right-7 bottom-20 flex flex-col gap-3 items-center z-50">
+              {showMenu && (
+                <>
+                  <button onClick={() => setShowMenu(false)} className="bg-gray-500/50 hover:bg-white cursor-pointer hover:text-black p-3 flex items-center justify-center size-14 rounded-full shadow-lg"><ChevronDown size={20} /></button>
+                  <button className="bg-[#41b1e6] hover:bg-white hover:text-[#41b1e6] cursor-pointer p-3 rounded-full flex items-center justify-center size-14 shadow-lg"><Send size={20} /></button>
+                  <button className="bg-primary hover:bg-white hover:text-primary p-3 cursor-pointer rounded-full flex items-center justify-center size-14 shadow-lg"><UserRoundSearch size={20} /></button>
+                </>
+              )}
+              {!showMenu && (
+                <button onClick={() => setShowMenu(true)} className="bg-gray-500/50 hover:bg-white cursor-pointer hover:text-black p-3 flex items-center justify-center size-14 rounded-full shadow-lg"><ChevronUp size={20} /></button>
+              )}
+            </div>
+            <div className="fixed right-4 bottom-3 flex flex-col gap-3 items-center z-50">
+              <button className="bg-[#2c7cf6] p-5 cursor-pointer rounded-full shadow-xl"><MessageSquareMore size={16} /></button>
+            </div>
 
     </div>
   );

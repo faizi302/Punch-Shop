@@ -23,27 +23,29 @@ const MarketCard = ({ item, onPurchase, onReviews }) => {
             </div>
           </div>
           {/* Middle Section - Price, Purchase Button, and Single Tag */}
-          <div className="flex flex-col items-start gap-2 flex-shrink-0">
-            <p className="text-white font-bold text-2xl whitespace-nowrap">${item.price} USD</p>
-            <div className="flex gap-3">
-              <button
-                onClick={onPurchase}
-                className="bg-[var(--color-mbutton)] hover:shadow-[0_0_18px_rgba(255,202,79,0.5)] text-black font-bold py-2 px-8 rounded-lg transition-shadow"
-              >
-                Purchase
-              </button>
-              {/* Only ONE tag - priority: isTrusted > isHot */}
-              {item.isTrusted ? (
-                <span className="bg-green-500 text-white text-xs px-1 rounded-md flex items-center gap-1 font-semibold">
+          <div className="flex gap-2 items-center">
+            <button
+              onClick={onPurchase}
+              className="bg-[var(--color-mbutton)] hover:shadow-[0_0_18px_rgba(255,202,79,0.5)] text-black font-bold py-2 px-8 rounded-lg transition-shadow"
+            >
+              Purchase
+            </button>
+
+            <div className="flex gap-2">
+              {item.isTrusted && (
+                <span className="[background:var(--button-gradientS)] text-white text-xs px-3 py-1 rounded-md flex items-center gap-1 font-semibold self-start">
                   <Check size={12} /> TRUSTED SELLER
                 </span>
-              ) : item.isHot ? (
-                <span className="[background:var(--button-gradient)] text-white text-xs px-3 rounded-md flex items-center gap-1 font-semibold">
+              )}
+              {item.isHot && !item.isTrusted && (
+                <span className="[background:var(--button-gradient)] text-white text-xs px-3 py-1 rounded-md flex items-center gap-1 font-semibold self-start">
                   <Flame size={12} /> HOT PRODUCT
                 </span>
-              ) : null}
+              )}
             </div>
           </div>
+
+
         </div>
 
       </div>
