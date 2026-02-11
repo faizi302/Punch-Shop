@@ -6,12 +6,15 @@ import Market from './pages/Market';
 import Privacy from './pages/Privacy';
 import TermsOfServices from './pages/TermsOfServices';
 import Reviews from './pages/Reviews';
-
+import Login from './pages/Login';
+import SupportHeader from './pages/SupportHeader';
 const App = () => {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/support" element={<SupportHeader />} />
         <Route path='/market' element={<Market/>} />
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/terms" element={<TermsOfServices />} />
