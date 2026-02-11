@@ -2,6 +2,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';           // or your router's Link
 import { Send, Headphones, LogIn, Menu, X } from 'lucide-react';
+import pineappleImg from '../assets/pine_apple.png';
+
 
 const MarketHeader = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -94,7 +96,7 @@ const MarketHeader = () => {
           {/* Header inside menu */}
           <div className="flex items-center justify-between p-6 border-b border-gray-800/50">
             <img 
-              src="/src/assets/pine_apple.png" 
+              src={pineappleImg} 
               alt="Logo" 
               className="h-10"
             />

@@ -1,11 +1,15 @@
 // Bundles.jsx (Created as placeholder similar to other sections)
 import React from 'react';
 import ProductCard from '../components/ProductCard';
+import premiumBundleImg from '../assets/top_selling_bundles/premium cc.avif';
+import ultimateBundleImg from '../assets/top_selling_bundles/ultimate_cc.avif';
+
 
 const sectionData = [
-  { id: "bun_01", title: "PREMIUM CC BUNDLE", price: "200.00", stock: 5, image: "src/assets/top_selling_bundles/premium cc.avif" },
-  { id: "bun_02", title: "ULTIMATE CC BUNDLE", price: "300.00", stock: 3, image: "src/assets/top_selling_bundles/ultimate_cc.avif" }
+  { id: "bun_01", title: "PREMIUM CC BUNDLE", price: "200.00", stock: 5, image: premiumBundleImg },
+  { id: "bun_02", title: "ULTIMATE CC BUNDLE", price: "300.00", stock: 3, image: ultimateBundleImg }
 ];
+
 
 const Bundles = ({ openModal }) => {
   return (

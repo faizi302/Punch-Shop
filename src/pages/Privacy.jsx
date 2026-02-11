@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { ChevronUp, ChevronDown, Send, UserRoundSearch, MessageSquareMore, Star } from 'lucide-react';
 import Footer from '../components/Footer';
+import heroLogo from '../assets/herologo.gif';
+
 
 const Privacy = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -13,7 +15,7 @@ const Privacy = () => {
       <header className="bg-[image:var(--color-mixed)] p-6 md:p-12 flex justify-center">
         <div className="w-full max-w-4xl">
           <NavLink to="/">
-            <img src="/src/assets/herologo.gif" alt="Banner" className="w-full h-auto rounded shadow-xl cursor-pointer" />
+            <img src={heroLogo}  alt="Banner" className="w-full h-auto rounded shadow-xl cursor-pointer" />
           </NavLink>
         </div>
       </header>

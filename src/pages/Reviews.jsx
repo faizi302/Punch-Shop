@@ -4,6 +4,8 @@ import {
   ChevronUp, ChevronDown, Send, UserRoundSearch, 
   MessageSquareMore, Star, CheckCircle2 
 } from 'lucide-react';
+import heroLogo from '../assets/herologo.gif';
+
 
 const Reviews = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -25,7 +27,7 @@ const Reviews = () => {
       <header className="bg-[image:var(--color-mixed)] p-6 md:p-12 flex justify-center">
         <div className="w-full max-w-4xl">
           <NavLink to="/">
-            <img src="/src/assets/herologo.gif" alt="Banner" className="w-full h-auto rounded shadow-xl cursor-pointer" />
+            <img src={heroLogo}  alt="Banner" className="w-full h-auto rounded shadow-xl cursor-pointer" />
           </NavLink>
         </div>
       </header>

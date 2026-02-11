@@ -1,6 +1,8 @@
 // pages/Login.jsx
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import pineappleImg from '../assets/pine_apple.png';
+
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -16,7 +18,7 @@ const Login = () => {
     <div className="min-h-screen bg-[var(--color-market)] text-white flex flex-col">
       {/* Header with Go Back button */}
       <header className="py-6 px-6 flex justify-between items-center bg-[#333440] mb-3">
-        <img src="src/assets/pine_apple.png" alt="Punch" className="h-10" />
+        <img src={pineappleImg} alt="Punch" className="h-10" />
         <Link 
           to="/market" 
           className="text-white hover:text-[var(--color-mbutton)] transition-colors text-sm "

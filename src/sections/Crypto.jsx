@@ -1,15 +1,23 @@
 // Crypto.jsx
 import React from 'react';
 import ProductCard from '../components/ProductCard';
+import coinbaseImg from '../assets/Crypto/coinbase.gif';
+import metamaskImg from '../assets/Crypto/metamask.gif';
+import trustWalletImg from '../assets/Crypto/trust wollet.gif';
+import binanceImg from '../assets/Crypto/binance.png';
+import krakenImg from '../assets/Crypto/kraken.png';
+import geminiImg from '../assets/Crypto/gemini.png';
+
 
 const sectionData = [
-  { id: "cry_01", title: "Coinbase Accounts", price: "150.00", stock: 14, image: "src/assets/Crypto/coinbase.gif" },
-  { id: "cry_02", title: "Metamask Accounts", price: "90.00", stock: 9, image: "src/assets/Crypto/metamask.gif" }, // Assuming image
-  { id: "cry_04", title: "Trust Wallet ACcounts", price: "250.00", stock: 21, image: "src/assets/Crypto/trust wollet.gif" }, // Assuming image
-  { id: "cry_05", title: "Binance Accounts", price: "300.00", stock: 21, image: "src/assets/Crypto/binance.png" },
-  { id: "cry_06", title: "Kraken Accounts", price: "180.00", stock: 21, image: "src/assets/Crypto/kraken.png" },
-  { id: "cry_07", title: "Gemini Accounts", price: "160.00", stock: 21, image: "src/assets/Crypto/gemini.png" }
-]
+  { id: "cry_01", title: "Coinbase Accounts", price: "150.00", stock: 14, image: coinbaseImg },
+  { id: "cry_02", title: "Metamask Accounts", price: "90.00", stock: 9, image: metamaskImg },
+  { id: "cry_04", title: "Trust Wallet ACcounts", price: "250.00", stock: 21, image: trustWalletImg },
+  { id: "cry_05", title: "Binance Accounts", price: "300.00", stock: 21, image: binanceImg },
+  { id: "cry_06", title: "Kraken Accounts", price: "180.00", stock: 21, image: krakenImg },
+  { id: "cry_07", title: "Gemini Accounts", price: "160.00", stock: 21, image: geminiImg }
+];
+
 
 const Crypto = ({ openModal }) => {
   return (
