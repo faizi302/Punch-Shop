@@ -1,23 +1,20 @@
 // App.jsx
-import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './Home';
+import CheckoutDetails from './components/CheckoutDetails';
 import Market from './pages/Market';
-import Login from './pages/Login';
-import SupportHeader from './pages/SupportHeader';
-
-
 const App = () => {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/market" element={<Market />} />
-        <Route path="/support" element={<SupportHeader />} />
-        <Route path="/login" element={<Login />} />
+        <Route path='/market' element={<Market/>} />
+        {/* Dynamic route for the product selection & email step */}
+        <Route path="/product/:id" element={<Home />} /> 
+        {/* The dedicated payment method page (Screenshot 5) */}
+        <Route path="/checkout/:id" element={<CheckoutDetails />} />
       </Routes>
     </Router>
   );
 }
-
 export default App;

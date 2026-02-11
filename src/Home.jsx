@@ -1,7 +1,7 @@
 // Home.jsx
 import React, { useState } from 'react';
 import { ChevronUp, ChevronDown, Send, UserRoundSearch, MessageSquareMore, Star, X } from 'lucide-react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate ,useParams } from 'react-router-dom';
 
 // Import all your sections
 import HotProducts from './sections/HotProducts';
@@ -14,13 +14,16 @@ import Social from './sections/Social';
 import Bundles from './sections/Bundles';
 import Support from './sections/Support';
 import FAQ from './sections/FAQ'; 
+import ProductSelectionModal from './components/ProductSelectionModal';
 
 
 const Home = () => {
     const [showMenu, setShowMenu] = useState(true);
     const [selectedProduct, setSelectedProduct] = useState(null);
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    // const [isModalOpen, setIsModalOpen] = useState(false);
+    const closeProductModal = () => navigate('/');
 
+    const {id} = useParams();
     const navigate = useNavigate();
     
   const openModal = (product) => {
@@ -64,6 +67,8 @@ const Home = () => {
       <Support />
       <FAQ />
 
+      {id && <ProductSelectionModal productId={id} onClose={closeProductModal} />  }
+
       {/* 5. FOOTER */}
       <footer className="bg-white border-t border-gray-100 py-8 px-6 text-black flex flex-col md:flex-row justify-between items-center gap-4">
         <div className="text-gray-400 text-sm font-bold">© PUNCH SHOP 2026</div>
@@ -74,7 +79,7 @@ const Home = () => {
       </footer>
 
       {/* 6. PURCHASE MODAL */}
-      {isModalOpen && selectedProduct && (
+      {/* {isModalOpen && selectedProduct && (
         <div className="fixed inset-0 bg-black/90 flex items-center justify-center z-[100] p-4 backdrop-blur-sm">
           <div className="bg-[#1a1a1a] border border-white/10 w-full max-w-md rounded-2xl p-6 relative">
             <button onClick={() => setIsModalOpen(false)} className="absolute right-4 top-4 text-gray-400 hover:text-white">
@@ -99,7 +104,7 @@ const Home = () => {
             </button>
           </div>
         </div>
-      )}
+      )} */}
 
       {/* 7. FLOATING MENU */}
       <div className="fixed right-6 bottom-6 flex flex-col gap-3 items-center z-50">

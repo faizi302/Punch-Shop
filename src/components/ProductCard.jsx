@@ -1,14 +1,16 @@
-// ProductCard.jsx
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 /**
  * Common Product Card Component
  * @param {Object} item - Contains id, title, price, stock, and image
- * @param {Function} onPurchase - Function to handle the modal opening
+ * @param {Function} onPurchase - (No longer used, using navigation instead)
  */
-const ProductCard = ({ item, onPurchase }) => {
+const ProductCard = ({ item }) => {
+  const navigate = useNavigate();
+
   return (
-    <div className="bg-white  overflow-hidden shadow-lg flex flex-col">
+    <div className="bg-white overflow-hidden shadow-lg flex flex-col">
       
       {/* Product Image Area */}
       <div className="w-full aspect-video bg-black flex items-center justify-center relative overflow-hidden">
@@ -20,7 +22,7 @@ const ProductCard = ({ item, onPurchase }) => {
       </div>
 
       {/* Product Details Area */}
-      <div className="p-4 flex flex-col flex-grow  p-4">
+      <div className="p-4 flex flex-col flex-grow p-4">
         {/* Title */}
         <h3 className="text-gray-600 flex justify-baseline font-semibold text-sm md:text-xl mb-1 line-clamp-1">
           {item.title}
@@ -38,10 +40,10 @@ const ProductCard = ({ item, onPurchase }) => {
         </div>
         <div className="w-8 h-[2px] bg-gray-200 mb-3"></div>
 
-        {/* Purchase Button */}
+        {/* Purchase Button - Now handles navigation to trigger modal */}
         <button 
-          onClick={() => onPurchase(item)}
-          className="w-full mt-4 bg-[var(--color-btn)] hover:bg-[var(--color-btnHover)] text-white font-semibold py-2 rounded-sm shadow-md shadow-primary/20 text-md"
+          onClick={() => navigate(`/product/${item.id}`)}
+          className="w-full mt-4 bg-[var(--color-btn)] hover:bg-[var(--color-btnHover)] text-white font-semibold py-2 rounded-sm shadow-md shadow-primary/20 text-md cursor-pointer"
         >
           Purchase
         </button>
