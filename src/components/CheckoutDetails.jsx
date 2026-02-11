@@ -6,6 +6,8 @@ import {
 } from 'lucide-react';
 import QRCode from "react-qr-code";
 
+
+
 const CheckoutDetails = () => {
   const { id } = useParams();
   const [searchParams] = useSearchParams();

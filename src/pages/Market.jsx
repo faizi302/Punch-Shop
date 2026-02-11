@@ -1,15 +1,38 @@
 // pages/Market.jsx
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import MarketCard from '../components/MarketCard';
-import { Send, Headphones, LogIn, Star, X, ChevronUp, ChevronDown, UserRoundSearch, MessageSquareMore } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Send, Headphones, LogIn, Star, X, MessageSquareMore, Copy, Check } from 'lucide-react';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Market = () => {
+  const navigate = useNavigate();
   const [visibleCount, setVisibleCount] = useState(10);
   const [selectedProduct, setSelectedProduct] = useState(null);
-  const [showPurchaseModal, setShowPurchaseModal] = useState(false);
   const [showReviewsModal, setShowReviewsModal] = useState(false);
-  // const [showMenu, setShowMenu] = useState(true);
+
+  // Modal states
+  const [step, setStep] = useState(0); // 0: closed, 1: email, 2: payment, 3: tutorial, 4: qr
+  const [email, setEmail] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [selectedPayment, setSelectedPayment] = useState(null);
+  const [copied, setCopied] = useState(false);
+  const [timer, setTimer] = useState(59 * 60 + 52);
+
+  // Timer effect
+  useEffect(() => {
+    if (step === 4 && timer > 0) {
+      const interval = setInterval(() => {
+        setTimer(prev => prev - 1);
+      }, 1000);
+      return () => clearInterval(interval);
+    }
+  }, [step, timer]);
+
+  const formatTime = (seconds) => {
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${mins}:${secs.toString().padStart(2, '0')}`;
+  };
 
   // Comprehensive market data array
   const marketData = [
@@ -150,34 +173,57 @@ const Market = () => {
       title: 'Wells Fargo Bank Login',
       description: 'WF Bank Login with $2,100 balance. Includes CC, ID and Login',
       price: '190.00',
-      image: 'src/assets/Hot_products/chime.gif',
+      image: 'src/assets/Hot_products/visa.gif',
       isHot: true,
       isTrusted: true,
       sellerAvatar: 'src/assets/reviews/rev-img3.avif',
       sellerName: 'punch.atshop.io',
       reviewCount: 1331,
     },
-    {
-      id: 'prod13',
-      title: 'Wells Fargo Bank Login',
-      description: 'WF Bank Login with $2,100 balance. Includes CC, ID and Login',
-      price: '190.00',
-      image: 'src/assets/Hot_products/visa.gif',
-      isHot: true,
-      isTrusted: true,
-      sellerAvatar: 'src/assets/reviews/rev-img.jpg',
-      sellerName: 'punch.atshop.io',
-      reviewCount: 1331,
-    },
   ];
 
-  const handleShowMore = () => {
-    setVisibleCount(prev => Math.min(prev + 10, marketData.length));
+  const handleLoadMore = () => {
+    setVisibleCount((prev) => prev + 10);
   };
 
-  const openPurchaseModal = (product) => {
+  const handlePurchase = (product) => {
     setSelectedProduct(product);
-    setShowPurchaseModal(true);
+    setStep(1);
+  };
+
+  const handleEmailSubmit = () => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email) {
+      setEmailError("Email is required");
+      return;
+    }
+    if (!emailRegex.test(email)) {
+      setEmailError("Please enter a valid email");
+      return;
+    }
+    setEmailError("");
+    setStep(2);
+  };
+
+  const handlePaymentSelect = (paymentType) => {
+    setSelectedPayment(paymentType);
+    setStep(4);
+  };
+
+  const copyAddress = () => {
+    navigator.clipboard.writeText('bc1qu7dfs19kp3u4nr9ssgcngp1ah3laseu7pfm');
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  const closeModal = () => {
+    setStep(0);
+    setEmail("");
+    setEmailError("");
+    setSelectedProduct(null);
+    setSelectedPayment(null);
+    setCopied(false);
+    setTimer(59 * 60 + 52);
   };
 
   const openReviewsModal = (product) => {
@@ -186,85 +232,251 @@ const Market = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[var(--color-market)] text-white flex flex-col">
-      {/* Sticky Header */}
-      <header className="sticky top-0 z-40 bg-[var(--color-mheader)] py-4 px-6 flex justify-between items-center">
-        <img src="src/assets/pine_apple.png" alt="Punch" className="h-10" />
-        <div className="flex gap-6 text-sm font-medium">
-          <Link to="https://t.me/mvpwins" className="flex items-center gap-2 hover:text-gray-300 transition-colors">
-            <Send size={16} /> Telegram
-          </Link>
-          <Link to="/support" className="flex items-center gap-2 hover:text-gray-300 transition-colors">
-            <Headphones size={16} /> Support
-          </Link>
-          <Link to="/login" className="flex items-center gap-2 hover:text-gray-300 transition-colors">
-            <LogIn size={16} /> Login
-          </Link>
+    <div className="min-h-screen bg-gray-950 p-4 md:p-8 pt-20">
+      {/* Header */}
+      <div className="fixed top-0 left-0 right-0 z-40 bg-gray-950 border-b border-gray-800 backdrop-blur-lg">
+        <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+          <div className="flex items-center gap-2">
+            <img src='src/assets/logo.jpg' className='w-12 h-12 rounded-full' alt="Logo" />
+          </div>
+          <div className="flex items-center gap-4">
+            <Link to="/" className="text-gray-300 hover:text-white flex items-center gap-2 transition-colors">
+              <Send size={18} />
+              <span className="hidden sm:inline">Telegram</span>
+            </Link>
+            <button className="text-gray-300 hover:text-white flex items-center gap-2 transition-colors">
+              <Headphones size={18} />
+              <span className="hidden sm:inline">Support</span>
+            </button>
+            <button className="text-gray-300 hover:text-white flex items-center gap-2 transition-colors">
+              <LogIn size={18} />
+              <span className="hidden sm:inline">Login</span>
+            </button>
+          </div>
         </div>
-      </header>
+      </div>
 
-
-      {/* Main Content with proper padding */}
-      <main className="flex-1 px-4 py-6">
-        <div className="space-y-4">
-          {marketData.slice(0, visibleCount).map((item) => (
-            <MarketCard 
-              key={item.id} 
-              item={item} 
-              onPurchase={() => openPurchaseModal(item)}
-              onReviews={() => openReviewsModal(item)}
+      {/* Main Content */}
+      <div className="max-w-7xl mx-auto">
+        <h1 className="text-white text-3xl md:text-4xl font-bold mb-8">Market</h1>
+        <div className="grid grid-cols-1  gap-6">
+          {marketData.slice(0, visibleCount).map((product) => (
+            <MarketCard
+              key={product.id}
+              item={product}
+              onPurchase={() => handlePurchase(product)}
+              onReviews={() => openReviewsModal(product)}
             />
+
           ))}
         </div>
-      </main>
 
-      {/* Show More Button */}
-      {visibleCount < marketData.length && (
-        <div className="py-8 text-center">
-          <button 
-            onClick={handleShowMore}
-            className="bg-[var(--color-mbutton)] text-black font-bold py-3 px-10 rounded-full shadow-lg hover:opacity-90 transition-opacity"
-          >
-            Show More Products
-          </button>
-        </div>
-      )}
+        {visibleCount < marketData.length && (
+          <div className="flex justify-center mt-8">
+            <button
+              onClick={handleLoadMore}
+              className="bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 px-8 rounded-lg transition-colors"
+            >
+              Load More Products
+            </button>
+          </div>
+        )}
+      </div>
 
-      {/* Footer */}
-      <footer className="bg-[var(--color-mfooter)] py-4 px-6 text-md text-center text-gray-400 text-sm">
-        © The punchs.io website is operated by GWD Processing FZC00.
-      </footer>
-
-      {/* Purchase Modal */}
-      {showPurchaseModal && selectedProduct && (
-        <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4">
-          <div className="bg-[var(--color-mheader)] rounded-2xl p-6 w-full max-w-md relative border border-[var(--color-mbutton)]/50">
-            <button 
-              onClick={() => setShowPurchaseModal(false)} 
-              className="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors"
+      {/* STEP 1: Email Modal */}
+      {step === 1 && selectedProduct && (
+        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4">
+          <div className="bg-gray-900 border-2 border-purple-500 rounded-2xl p-8 w-full max-w-md relative shadow-2xl">
+            <button
+              onClick={closeModal}
+              className="absolute top-4 right-4 text-gray-400 hover:text-gray-200"
             >
               <X size={24} />
             </button>
-            <h2 className="text-[var(--color-mbutton)] font-bold text-2xl mb-4">Complete Your Purchase</h2>
-            <p className="text-white mb-2">Product: {selectedProduct.title}</p>
-            <p className="text-white mb-2">Price: ${selectedProduct.price} USD</p>
-            <p className="text-white mb-4">Date: 2/10/2026</p>
-            <p className="text-white mb-4">Order ID: sUQvrIRJX4SzVbaY</p>
-            <input 
-              type="email" 
-              placeholder="Enter your email" 
-              className="w-full bg-gray-800 text-white p-3 rounded-lg mb-4 border border-gray-700 focus:border-[var(--color-mbutton)] focus:outline-none"
+            <h2 className="text-yellow-400 font-bold text-2xl mb-6">Complete Your Purchase</h2>
+            <div className="space-y-3 mb-6 text-gray-300">
+              <p><span className="font-semibold text-white">Product:</span> {selectedProduct.title}</p>
+              <p><span className="font-semibold text-white">Price:</span> ${selectedProduct.price} USD</p>
+              <p><span className="font-semibold text-white">Date:</span> 2/11/2026</p>
+              <p><span className="font-semibold text-white">Order ID:</span> o8RJesCs6wK6XOxz</p>
+            </div>
+            <input
+              type="email"
+              placeholder="Enter your email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="w-full bg-white text-gray-900 border border-gray-300 rounded-lg p-3 mb-2 focus:outline-none focus:ring-2 focus:ring-purple-500"
             />
-            <div className="flex gap-4">
-              <button className="bg-[var(--color-mbutton)] text-black font-bold py-3 px-6 rounded-lg flex-1 hover:opacity-90 transition-opacity">
+            {emailError && <p className="text-red-400 text-sm mb-4">{emailError}</p>}
+            <div className="flex gap-3 mt-6">
+              <button
+                onClick={handleEmailSubmit}
+                className="flex-1 bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold py-3 rounded-lg transition-colors"
+              >
                 Checkout
               </button>
-              <button 
-                onClick={() => setShowPurchaseModal(false)}
-                className="bg-gray-700 text-white font-bold py-3 px-6 rounded-lg flex-1 hover:bg-gray-600 transition-colors"
+              <button
+                onClick={closeModal}
+                className="flex-1 bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 rounded-lg transition-colors"
               >
                 Cancel
               </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* STEP 2: Payment Selection Modal */}
+      {step === 2 && (
+        <div className="fixed inset-0 bg-gray-100 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-2xl p-8 w-full max-w-md relative shadow-2xl">
+            <h2 className="text-gray-900 font-bold text-2xl mb-6 text-center">Select a Payment Option</h2>
+            <div className="space-y-3 mb-6">
+              <button
+                onClick={() => handlePaymentSelect('bitcoin')}
+                className="w-full bg-white border border-gray-200 rounded-lg p-4 hover:border-orange-500 hover:shadow-md transition-all"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 bg-orange-500 rounded-full flex items-center justify-center text-white font-bold text-xl">₿</div>
+                  <div className="text-left">
+                    <p className="font-semibold text-gray-900">Bitcoin</p>
+                    <p className="text-sm text-gray-500">Completes in 3 minutes</p>
+                  </div>
+                </div>
+              </button>
+              <button
+                onClick={() => handlePaymentSelect('ethereum')}
+                className="w-full bg-white border border-gray-200 rounded-lg p-4 hover:border-blue-500 hover:shadow-md transition-all"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-xl">◆</div>
+                  <div className="text-left">
+                    <p className="font-semibold text-gray-900">Ethereum</p>
+                    <p className="text-sm text-gray-500">Completes in 1 minute</p>
+                  </div>
+                </div>
+              </button>
+              <button
+                onClick={() => handlePaymentSelect('solana')}
+                className="w-full bg-white border border-gray-200 rounded-lg p-4 hover:border-green-500 hover:shadow-md transition-all"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center text-white font-bold text-xl">◎</div>
+                  <div className="text-left">
+                    <p className="font-semibold text-gray-900">Solana</p>
+                    <p className="text-sm text-gray-500">Completes in a few seconds</p>
+                  </div>
+                </div>
+              </button>
+            </div>
+            <button
+              onClick={() => setStep(3)}
+              className="w-full bg-blue-600 text-white font-semibold py-3 rounded-lg hover:bg-blue-700 transition-colors"
+            >
+              How to Pay with Crypto
+            </button>
+            <p className="text-center text-gray-500 text-sm mt-4">
+              Secure checkout powered by Crypto Payments.
+            </p>
+          </div>
+        </div>
+      )}
+
+      {/* STEP 3: Tutorial Modal */}
+      {step === 3 && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-[60] p-4">
+          <div className="bg-white rounded-2xl p-6 w-full max-w-md relative shadow-2xl">
+            <button
+              onClick={() => setStep(2)}
+              className="absolute top-4 right-4 text-gray-900 hover:text-gray-600"
+            >
+              <X size={24} />
+            </button>
+            <h2 className="text-gray-900 font-bold text-xl mb-6">Choose a Tutorial</h2>
+            <div className="space-y-2">
+              <button className="w-full bg-blue-50 border border-blue-100 rounded-lg p-4 text-left hover:bg-blue-100 transition-colors">
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 bg-green-500 rounded-md flex items-center justify-center text-white font-bold">$</div>
+                  <span className="text-blue-600 font-medium">Cash App</span>
+                </div>
+              </button>
+              <button className="w-full bg-blue-50 border border-blue-100 rounded-lg p-4 text-left hover:bg-blue-100 transition-colors">
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 bg-blue-600 rounded-md flex items-center justify-center text-white font-bold">C</div>
+                  <span className="text-blue-600 font-medium">Coinbase</span>
+                </div>
+              </button>
+              <button className="w-full bg-blue-50 border border-blue-100 rounded-lg p-4 text-left hover:bg-blue-100 transition-colors">
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 bg-purple-600 rounded-md flex items-center justify-center text-white font-bold">E</div>
+                  <span className="text-blue-600 font-medium">Exodus</span>
+                </div>
+              </button>
+              <button className="w-full bg-blue-50 border border-blue-100 rounded-lg p-4 text-left hover:bg-blue-100 transition-colors">
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 bg-blue-500 rounded-md flex items-center justify-center text-white font-bold">T</div>
+                  <span className="text-blue-600 font-medium">Trust Wallet</span>
+                </div>
+              </button>
+              <button className="w-full bg-blue-50 border border-blue-100 rounded-lg p-4 text-left hover:bg-blue-100 transition-colors">
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 bg-gray-600 rounded-md flex items-center justify-center text-white text-lg">🏧</div>
+                  <span className="text-blue-600 font-medium">Find Crypto ATM Near You</span>
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* STEP 4: QR Modal */}
+      {step === 4 && (
+        <div className="fixed inset-0 bg-gray-100 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-2xl p-8 w-full max-w-md relative shadow-2xl">
+            <button
+              onClick={() => setStep(2)}
+              className="absolute top-6 left-6 text-blue-600 hover:text-blue-700 text-sm font-medium"
+            >
+              ← Go Back
+            </button>
+
+            <div className="text-center mt-8">
+              <div className="w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center text-white text-3xl font-bold mx-auto mb-4">
+                ₿
+              </div>
+              <h2 className="text-gray-900 font-bold text-xl mb-6">Send Bitcoin Payment</h2>
+
+              <div className="bg-white p-4 rounded-lg inline-block mb-4">
+                <img
+                  src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='white' width='100' height='100'/%3E%3Cpath fill='black' d='M10,10h5v5h-5zM20,10h5v5h-5zM25,10h5v5h-5zM30,10h5v5h-5zM40,10h5v5h-5zM60,10h5v5h-5zM70,10h5v5h-5zM75,10h5v5h-5zM80,10h5v5h-5zM85,10h5v5h-5zM10,15h5v5h-5zM40,15h5v5h-5zM50,15h5v5h-5zM60,15h5v5h-5zM85,15h5v5h-5zM10,20h5v5h-5zM20,20h5v5h-5zM25,20h5v5h-5zM30,20h5v5h-5zM40,20h5v5h-5zM50,20h5v5h-5zM60,20h5v5h-5zM70,20h5v5h-5zM75,20h5v5h-5zM80,20h5v5h-5zM85,20h5v5h-5zM10,25h5v5h-5zM20,25h5v5h-5zM25,25h5v5h-5zM30,25h5v5h-5zM40,25h5v5h-5zM60,25h5v5h-5zM70,25h5v5h-5zM75,25h5v5h-5zM80,25h5v5h-5zM85,25h5v5h-5zM10,30h5v5h-5zM20,30h5v5h-5zM25,30h5v5h-5zM30,30h5v5h-5zM40,30h5v5h-5zM60,30h5v5h-5zM70,30h5v5h-5zM75,30h5v5h-5zM80,30h5v5h-5zM85,30h5v5h-5zM10,35h5v5h-5zM40,35h5v5h-5zM60,35h5v5h-5zM85,35h5v5h-5zM10,40h5v5h-5zM20,40h5v5h-5zM25,40h5v5h-5zM30,40h5v5h-5zM40,40h5v5h-5zM60,40h5v5h-5zM70,40h5v5h-5zM75,40h5v5h-5zM80,40h5v5h-5zM85,40h5v5h-5zM50,45h5v5h-5zM55,45h5v5h-5zM10,50h5v5h-5zM20,50h5v5h-5zM35,50h5v5h-5zM40,50h5v5h-5zM45,50h5v5h-5zM55,50h5v5h-5zM65,50h5v5h-5zM75,50h5v5h-5zM85,50h5v5h-5zM10,55h5v5h-5zM40,55h5v5h-5zM45,55h5v5h-5zM50,55h5v5h-5zM70,55h5v5h-5zM75,55h5v5h-5zM80,55h5v5h-5zM10,60h5v5h-5zM20,60h5v5h-5zM25,60h5v5h-5zM30,60h5v5h-5zM40,60h5v5h-5zM50,60h5v5h-5zM55,60h5v5h-5zM60,60h5v5h-5zM70,60h5v5h-5zM80,60h5v5h-5zM85,60h5v5h-5zM10,65h5v5h-5zM30,65h5v5h-5zM40,65h5v5h-5zM50,65h5v5h-5zM55,65h5v5h-5zM65,65h5v5h-5zM70,65h5v5h-5zM75,65h5v5h-5zM85,65h5v5h-5zM10,70h5v5h-5zM20,70h5v5h-5zM25,70h5v5h-5zM30,70h5v5h-5zM40,70h5v5h-5zM60,70h5v5h-5zM70,70h5v5h-5zM75,70h5v5h-5zM80,70h5v5h-5zM85,70h5v5h-5zM10,75h5v5h-5zM40,75h5v5h-5zM50,75h5v5h-5zM60,75h5v5h-5zM70,75h5v5h-5zM85,75h5v5h-5zM10,80h5v5h-5zM20,80h5v5h-5zM25,80h5v5h-5zM30,80h5v5h-5zM40,80h5v5h-5zM50,80h5v5h-5zM60,80h5v5h-5zM70,80h5v5h-5zM75,80h5v5h-5zM80,80h5v5h-5zM85,80h5v5h-5zM10,85h5v5h-5zM85,85h5v5h-5z'/%3E%3C/svg%3E"
+                  alt="QR Code"
+                  className="w-48 h-48"
+                />
+              </div>
+
+              <p className="text-gray-600 text-sm mb-3">Scan the QR code or copy the address to pay:</p>
+
+              <div className="bg-gray-50 rounded-lg p-3 mb-4 flex items-center justify-between">
+                <span className="text-gray-800 text-sm font-mono">bc1qu7dfs19kp3u4nr9ssgcngp1ah3laseu7pfm</span>
+                <button
+                  onClick={copyAddress}
+                  className="ml-2 text-orange-500 hover:text-orange-600"
+                >
+                  {copied ? <Check size={20} /> : <Copy size={20} />}
+                </button>
+              </div>
+
+              <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-3 mb-4 flex items-start gap-2">
+                <span className="text-yellow-600 text-lg">⚠️</span>
+                <p className="text-yellow-800 text-xs text-left">
+                  Please ensure you send the exact amount to avoid delays or issues.
+                </p>
+              </div>
+
+              <div className="bg-orange-50 rounded-lg p-4">
+                <p className="text-gray-700 text-sm mb-2">We're watching the network for your transaction.</p>
+                <p className="text-orange-600 font-bold text-3xl">{formatTime(timer)}</p>
+              </div>
             </div>
           </div>
         </div>
@@ -274,8 +486,8 @@ const Market = () => {
       {showReviewsModal && selectedProduct && (
         <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-2xl p-6 w-full max-w-md max-h-[600px] overflow-y-auto relative text-black shadow-2xl">
-            <button 
-              onClick={() => setShowReviewsModal(false)} 
+            <button
+              onClick={() => setShowReviewsModal(false)}
               className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors"
             >
               <X size={24} />
@@ -300,12 +512,12 @@ const Market = () => {
       {/* Floating Menu */}
       <div className="fixed right-8 bottom-20 flex flex-col gap-3 items-center z-50">
         <button className="bg-[#601db2] hover:bg-[#601db2] p-4 rounded-full shadow-xl transition-colors">
-          <img src='src/assets/float-img.png' className="w-8 h-8" />
+          <img src='src/assets/float-img.png' className="w-8 h-8" alt="Float" />
         </button>
       </div>
       <div className="fixed right-6 bottom-6 flex flex-col gap-3 items-center size-10 z-50">
         <button className="bg-[#2c7cf6] hover:bg-[#1e6ee6] p-4 rounded-full shadow-xl transition-colors">
-          <MessageSquareMore size={24}/>
+          <MessageSquareMore size={24} />
         </button>
       </div>
     </div>
