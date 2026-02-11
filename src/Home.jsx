@@ -71,22 +71,6 @@ const Home = () => {
       {id && <ProductSelectionModal productId={id} onClose={closeProductModal} />}
       <Footer/>
 
-      {/* 5. FOOTER */}
-      {/* <footer className="bg-white border-t border-gray-100 py-14 px-12 text-black flex flex-col md:flex-row justify-between items-center gap-4">
-        <div className="text-gray-400 text-md">© PUNCH 2026</div>
-        <div className="flex items-center gap-2 text-yellow-400">
-          <ul className='flex gap-4 text-[#7958db] text-sm font-light mr-3'>
-            <NavLink to="/privacy" className="hover:text-black cursor-pointer">Privacy Policy</NavLink>
-            <NavLink to="/terms" className="hover:text-black cursor-pointer">Terms of Services</NavLink>
-            <NavLink to="/reviews" className="flex items-center gap-1 text-yellow-400 hover:scale-105 transition-transform">
-              {[...Array(5)].map((_, i) => <Star key={i} size={12} fill="currentColor" />)}
-              <span className="text-gray-400 ml-2 font-medium">(331)</span>
-            </NavLink>
-          </ul>
-
-        </div>
-      </footer> */}
-
 
       {/* 7. FLOATING MENU */}
             <div className="fixed right-7 bottom-20 flex flex-col gap-3 items-center z-50">

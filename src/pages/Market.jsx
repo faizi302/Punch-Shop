@@ -441,8 +441,8 @@ const Market = () => {
 
       {/* STEP 4: QR Modal */}
       {step === 4 && (
-        <div className="fixed inset-0 bg-gray-100 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-2xl p-8 w-full max-w-md relative shadow-2xl">
+        <div className="fixed  inset-0 bg-gray-100  py-10 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-2xl p-8 max-w-md relative shadow-2xl">
             <button 
               onClick={() => setStep(2)}
               className="absolute top-6 left-6 text-blue-600 hover:text-blue-700 text-sm font-medium"
@@ -460,13 +460,13 @@ const Market = () => {
                 <img 
                   src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='white' width='100' height='100'/%3E%3Cpath fill='black' d='M10,10h5v5h-5zM20,10h5v5h-5zM25,10h5v5h-5zM30,10h5v5h-5zM40,10h5v5h-5zM60,10h5v5h-5zM70,10h5v5h-5zM75,10h5v5h-5zM80,10h5v5h-5zM85,10h5v5h-5zM10,15h5v5h-5zM40,15h5v5h-5zM50,15h5v5h-5zM60,15h5v5h-5zM85,15h5v5h-5zM10,20h5v5h-5zM20,20h5v5h-5zM25,20h5v5h-5zM30,20h5v5h-5zM40,20h5v5h-5zM50,20h5v5h-5zM60,20h5v5h-5zM70,20h5v5h-5zM75,20h5v5h-5zM80,20h5v5h-5zM85,20h5v5h-5zM10,25h5v5h-5zM20,25h5v5h-5zM25,25h5v5h-5zM30,25h5v5h-5zM40,25h5v5h-5zM60,25h5v5h-5zM70,25h5v5h-5zM75,25h5v5h-5zM80,25h5v5h-5zM85,25h5v5h-5zM10,30h5v5h-5zM20,30h5v5h-5zM25,30h5v5h-5zM30,30h5v5h-5zM40,30h5v5h-5zM60,30h5v5h-5zM70,30h5v5h-5zM75,30h5v5h-5zM80,30h5v5h-5zM85,30h5v5h-5zM10,35h5v5h-5zM40,35h5v5h-5zM60,35h5v5h-5zM85,35h5v5h-5zM10,40h5v5h-5zM20,40h5v5h-5zM25,40h5v5h-5zM30,40h5v5h-5zM40,40h5v5h-5zM60,40h5v5h-5zM70,40h5v5h-5zM75,40h5v5h-5zM80,40h5v5h-5zM85,40h5v5h-5zM50,45h5v5h-5zM55,45h5v5h-5zM10,50h5v5h-5zM20,50h5v5h-5zM35,50h5v5h-5zM40,50h5v5h-5zM45,50h5v5h-5zM55,50h5v5h-5zM65,50h5v5h-5zM75,50h5v5h-5zM85,50h5v5h-5zM10,55h5v5h-5zM40,55h5v5h-5zM45,55h5v5h-5zM50,55h5v5h-5zM70,55h5v5h-5zM75,55h5v5h-5zM80,55h5v5h-5zM10,60h5v5h-5zM20,60h5v5h-5zM25,60h5v5h-5zM30,60h5v5h-5zM40,60h5v5h-5zM50,60h5v5h-5zM55,60h5v5h-5zM60,60h5v5h-5zM70,60h5v5h-5zM80,60h5v5h-5zM85,60h5v5h-5zM10,65h5v5h-5zM30,65h5v5h-5zM40,65h5v5h-5zM50,65h5v5h-5zM55,65h5v5h-5zM65,65h5v5h-5zM70,65h5v5h-5zM75,65h5v5h-5zM85,65h5v5h-5zM10,70h5v5h-5zM20,70h5v5h-5zM25,70h5v5h-5zM30,70h5v5h-5zM40,70h5v5h-5zM60,70h5v5h-5zM70,70h5v5h-5zM75,70h5v5h-5zM80,70h5v5h-5zM85,70h5v5h-5zM10,75h5v5h-5zM40,75h5v5h-5zM50,75h5v5h-5zM60,75h5v5h-5zM70,75h5v5h-5zM85,75h5v5h-5zM10,80h5v5h-5zM20,80h5v5h-5zM25,80h5v5h-5zM30,80h5v5h-5zM40,80h5v5h-5zM50,80h5v5h-5zM60,80h5v5h-5zM70,80h5v5h-5zM75,80h5v5h-5zM80,80h5v5h-5zM85,80h5v5h-5zM10,85h5v5h-5zM85,85h5v5h-5z'/%3E%3C/svg%3E"
                   alt="QR Code"
-                  className="w-48 h-48"
+                  className="w-25 h-25"
                 />
               </div>
               
               <p className="text-gray-600 text-sm mb-3">Scan the QR code or copy the address to pay:</p>
               
-              <div className="bg-gray-50 rounded-lg p-3 mb-4 flex items-center justify-between">
+              {/* <div className="bg-gray-50 rounded-lg p-3 mb-4 flex items-center justify-between">
                 <span className="text-gray-800 text-sm font-mono">bc1qu7dfs19kp3u4nr9ssgcngp1ah3laseu7pfm</span>
                 <button
                   onClick={copyAddress}
@@ -474,7 +474,7 @@ const Market = () => {
                 >
                   {copied ? <Check size={20} /> : <Copy size={20} />}
                 </button>
-              </div>
+              </div> */}
               
               <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-3 mb-4 flex items-start gap-2">
                 <span className="text-yellow-600 text-lg">⚠️</span>
@@ -493,7 +493,7 @@ const Market = () => {
       )}
 
       {/* Reviews Modal */}
-      {showReviewsModal && selectedProduct && (
+      {/* {showReviewsModal && selectedProduct && (
         <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-2xl p-6 w-full max-w-md max-h-[600px] overflow-y-auto relative text-black shadow-2xl">
             <button 
@@ -517,7 +517,7 @@ const Market = () => {
             </div>
           </div>
         </div>
-      )}
+      )} */}
 
       {/* Floating Menu */}
       <div className="fixed right-8 bottom-20 flex flex-col gap-3 items-center z-50">
