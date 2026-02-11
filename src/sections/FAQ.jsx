@@ -39,7 +39,7 @@ const faqItems = [
           href="https://www.youtube.com/watch?v=VHspj-KHYWs"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-[var(--color-primary)] hover:underline"
+          className="underline font-semibold"
         >
           https://www.youtube.com/watch?v=VHspj-KHYWs
         </a>
@@ -50,7 +50,7 @@ const faqItems = [
           href="https://www.youtube.com/watch?v=FDH_WAYI"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-[var(--color-primary)] hover:underline"
+          className="underline font-semibold"
         >
           https://www.youtube.com/watch?v=FDH_WAYI
         </a>
@@ -61,7 +61,7 @@ const faqItems = [
           href="https://coinatmradar.com/"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-[var(--color-primary)] hover:underline"
+          className="underline font-semibold"
         >
           https://coinatmradar.com/
         </a>
@@ -80,7 +80,7 @@ const faqItems = [
           href="https://t.me/mvpwins"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-[var(--color-primary)] hover:underline"
+          className="underline font-semibold"
         >
           https://t.me/mvpwins
         </a>
@@ -92,7 +92,7 @@ const faqItems = [
           href="https://punchatshop.io"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-[var(--color-primary)] hover:underline"
+          className="underline font-semibold"
         >
           https://punchatshop.io
         </a>
@@ -104,15 +104,15 @@ const faqItems = [
 
 const FAQ = () => {
   return (
-    <section className="py-12 px-4 md:px-10 bg-[var(--color-support-bg)]">
+    <section className="pb-14 pt-18 px-4 md:px-16 bg-[var(--color-support-bg)] text-white">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-12">FAQ</h2>
+        <h2 className="text-4xl font-semibold mb-8 text-center">FAQ</h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {faqItems.map((item, index) => (
             <div
               key={index}
-              className="bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center text-center h-full"
+              className="bg-white rounded-md shadow-lg p-6 flex flex-col items-center text-center h-fit"
             >
               <div className="-mt-10 mb-6">
                 <div className="w-16 h-16 bg-[var(--color-primary)] mt-10 rounded-full flex items-center justify-center shadow-md">
@@ -120,9 +120,12 @@ const FAQ = () => {
                 </div>
               </div>
 
-              <h3 className="text-xl font-bold text-gray-900 mb-4 leading-tight">
+              <h3 className="text-xl md:text-1xl text-gray-700 mb-2 font-semibold">
                 {item.question}
               </h3>
+              <div className="flex justify-center">
+            <div className="w-10 h-[2px] bg-gray-200 mb-3 justify-center"></div>
+          </div>
 
               <div className="text-gray-700 text-base leading-relaxed">
                 {item.answer}
