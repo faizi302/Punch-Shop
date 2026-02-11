@@ -1,7 +1,7 @@
 // Home.jsx
 import React, { useState } from 'react';
 import { ChevronUp, ChevronDown, Send, UserRoundSearch, MessageSquareMore, Star, X } from 'lucide-react';
-import { NavLink, useNavigate, useParams } from 'react-router-dom';
+import { NavLink, useNavigate, useParams,useLocation } from 'react-router-dom';
 
 // Import all your sections
 import HotProducts from './sections/HotProducts';
@@ -19,6 +19,7 @@ import Footer from './components/Footer';
 
 
 const Home = () => {
+  const location = useLocation();
   const [showMenu, setShowMenu] = useState(true);
   const [selectedProduct, setSelectedProduct] = useState(null);
   // const [isModalOpen, setIsModalOpen] = useState(false);
@@ -33,7 +34,7 @@ const Home = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col font-sans bg-primary text-white">
+    <div key={location.key} className="min-h-screen flex flex-col font-sans bg-primary text-white">
 
       {/* 1. HEADER BANNER */}
       <header className="bg-[image:var(--color-mixed)] p-6 md:p-12 flex justify-center">
