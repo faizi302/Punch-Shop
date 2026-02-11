@@ -88,21 +88,22 @@ const Home = () => {
       </footer> */}
 
 
-
       {/* 7. FLOATING MENU */}
-      <div className="fixed right-8 bottom-6 flex flex-col gap-3 items-center z-50">
-        {showMenu && (
-          <>
-            <button onClick={() => setShowMenu(false)} className="bg-gray-500/50 hover:bg-white cursor-pointer hover:text-black p-3 flex items-center justify-center size-16 rounded-full shadow-lg"><ChevronDown size={30} /></button>
-            <button className="bg-[#41b1e6] hover:bg-white hover:text-[#41b1e6] cursor-pointer p-3 rounded-full flex items-center justify-center size-16 shadow-lg"><Send size={30} /></button>
-            <button className="bg-primary hover:bg-white hover:text-primary p-3 cursor-pointer rounded-full flex items-center justify-center size-16 shadow-lg"><UserRoundSearch size={30} /></button>
-          </>
-        )}
-        {!showMenu && (
-          <button onClick={() => setShowMenu(true)} className="bg-gray-500/50 hover:bg-white cursor-pointer hover:text-black p-3 flex items-center justify-center size-16 rounded-full shadow-lg"><ChevronUp size={30} /></button>
-        )}
-        <button className="bg-[#2c7cf6] p-5 cursor-pointer rounded-full shadow-xl"><MessageSquareMore size={24} /></button>
-      </div>
+            <div className="fixed right-7 bottom-20 flex flex-col gap-3 items-center z-50">
+              {showMenu && (
+                <>
+                  <button onClick={() => setShowMenu(false)} className="bg-gray-500/50 hover:bg-white cursor-pointer hover:text-black p-3 flex items-center justify-center size-14 rounded-full shadow-lg"><ChevronDown size={20} /></button>
+                  <button className="bg-[#41b1e6] hover:bg-white hover:text-[#41b1e6] cursor-pointer p-3 rounded-full flex items-center justify-center size-14 shadow-lg"><Send size={20} /></button>
+                  <button className="bg-primary hover:bg-white hover:text-primary p-3 cursor-pointer rounded-full flex items-center justify-center size-14 shadow-lg"><UserRoundSearch size={20} /></button>
+                </>
+              )}
+              {!showMenu && (
+                <button onClick={() => setShowMenu(true)} className="bg-gray-500/50 hover:bg-white cursor-pointer hover:text-black p-3 flex items-center justify-center size-14 rounded-full shadow-lg"><ChevronUp size={20} /></button>
+              )}
+            </div>
+            <div className="fixed right-4 bottom-3 flex flex-col gap-3 items-center z-50">
+              <button className="bg-[#2c7cf6] p-5 cursor-pointer rounded-full shadow-xl"><MessageSquareMore size={16} /></button>
+            </div>
 
     </div>
   );
