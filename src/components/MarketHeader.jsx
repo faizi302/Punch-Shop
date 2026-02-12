@@ -25,7 +25,7 @@ const MarketHeader = () => {
         {/* Logo */}
         <Link to="/" className="flex-shrink-0">
           <img 
-            src="/src/assets/pine_apple.png" 
+            src={pineappleImg}
             alt="Punch Logo" 
             className="h-9 sm:h-10 md:h-11"
           />
