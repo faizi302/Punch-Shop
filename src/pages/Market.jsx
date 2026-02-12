@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import MarketCard from '../components/MarketCard';
 import { Send, Headphones, LogIn, Star, X, MessageSquareMore, Copy, Check } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import MarketHeader from '../components/MarketHeader';
 // product images
 import mastercardImg from '../assets/Hot_products/masetcard.webp';
@@ -18,6 +18,8 @@ import floatImg from '../assets/float-img.png';
 
 
 const Market = () => {
+
+  const location = useLocation();
   const [visibleCount, setVisibleCount] = useState(10);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [showPurchaseModal, setShowPurchaseModal] = useState(false);
@@ -261,7 +263,7 @@ const marketData = [
   };
 
   return (
-    <div className="min-h-screen bg-[var(--color-market)] text-white flex flex-col">
+    <div key={location.key} className="min-h-screen bg-[var(--color-market)] text-white flex flex-col">
       {/* Sticky Header */}
       <MarketHeader/>
 
@@ -441,57 +443,80 @@ const marketData = [
       )}
 
       {/* STEP 4: QR Modal */}
-      {step === 4 && (
-        <div className="fixed inset-0 bg-gray-100 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-2xl p-8 w-full max-w-md fixed shadow-2xl max-h-[80vh] overflow-y-auto">
-            <button 
-              onClick={() => setStep(2)}
-              className="absolute top-6 left-6 text-blue-600 hover:text-blue-700 text-sm font-medium"
-            >
-              ← Go Back
-            </button>
-            
-            <div className="text-center mt-8">
-              <div className="w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center text-white text-3xl font-bold mx-auto mb-4">
-                ₿
-              </div>
-              <h2 className="text-gray-900 font-bold text-xl mb-6">Send Bitcoin Payment</h2>
-              
-              <div className="bg-white p-4 rounded-lg inline-block mb-4">
-                <img 
-                  src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='white' width='100' height='100'/%3E%3Cpath fill='black' d='M10,10h5v5h-5zM20,10h5v5h-5zM25,10h5v5h-5zM30,10h5v5h-5zM40,10h5v5h-5zM60,10h5v5h-5zM70,10h5v5h-5zM75,10h5v5h-5zM80,10h5v5h-5zM85,10h5v5h-5zM10,15h5v5h-5zM40,15h5v5h-5zM50,15h5v5h-5zM60,15h5v5h-5zM85,15h5v5h-5zM10,20h5v5h-5zM20,20h5v5h-5zM25,20h5v5h-5zM30,20h5v5h-5zM40,20h5v5h-5zM50,20h5v5h-5zM60,20h5v5h-5zM70,20h5v5h-5zM75,20h5v5h-5zM80,20h5v5h-5zM85,20h5v5h-5zM10,25h5v5h-5zM20,25h5v5h-5zM25,25h5v5h-5zM30,25h5v5h-5zM40,25h5v5h-5zM60,25h5v5h-5zM70,25h5v5h-5zM75,25h5v5h-5zM80,25h5v5h-5zM85,25h5v5h-5zM10,30h5v5h-5zM20,30h5v5h-5zM25,30h5v5h-5zM30,30h5v5h-5zM40,30h5v5h-5zM60,30h5v5h-5zM70,30h5v5h-5zM75,30h5v5h-5zM80,30h5v5h-5zM85,30h5v5h-5zM10,35h5v5h-5zM40,35h5v5h-5zM60,35h5v5h-5zM85,35h5v5h-5zM10,40h5v5h-5zM20,40h5v5h-5zM25,40h5v5h-5zM30,40h5v5h-5zM40,40h5v5h-5zM60,40h5v5h-5zM70,40h5v5h-5zM75,40h5v5h-5zM80,40h5v5h-5zM85,40h5v5h-5zM50,45h5v5h-5zM55,45h5v5h-5zM10,50h5v5h-5zM20,50h5v5h-5zM35,50h5v5h-5zM40,50h5v5h-5zM45,50h5v5h-5zM55,50h5v5h-5zM65,50h5v5h-5zM75,50h5v5h-5zM85,50h5v5h-5zM10,55h5v5h-5zM40,55h5v5h-5zM45,55h5v5h-5zM50,55h5v5h-5zM70,55h5v5h-5zM75,55h5v5h-5zM80,55h5v5h-5zM10,60h5v5h-5zM20,60h5v5h-5zM25,60h5v5h-5zM30,60h5v5h-5zM40,60h5v5h-5zM50,60h5v5h-5zM55,60h5v5h-5zM60,60h5v5h-5zM70,60h5v5h-5zM80,60h5v5h-5zM85,60h5v5h-5zM10,65h5v5h-5zM30,65h5v5h-5zM40,65h5v5h-5zM50,65h5v5h-5zM55,65h5v5h-5zM65,65h5v5h-5zM70,65h5v5h-5zM75,65h5v5h-5zM85,65h5v5h-5zM10,70h5v5h-5zM20,70h5v5h-5zM25,70h5v5h-5zM30,70h5v5h-5zM40,70h5v5h-5zM60,70h5v5h-5zM70,70h5v5h-5zM75,70h5v5h-5zM80,70h5v5h-5zM85,70h5v5h-5zM10,75h5v5h-5zM40,75h5v5h-5zM50,75h5v5h-5zM60,75h5v5h-5zM70,75h5v5h-5zM85,75h5v5h-5zM10,80h5v5h-5zM20,80h5v5h-5zM25,80h5v5h-5zM30,80h5v5h-5zM40,80h5v5h-5zM50,80h5v5h-5zM60,80h5v5h-5zM70,80h5v5h-5zM75,80h5v5h-5zM80,80h5v5h-5zM85,80h5v5h-5zM10,85h5v5h-5zM85,85h5v5h-5z'/%3E%3C/svg%3E"
-                  alt="QR Code"
-                  className="w-48 h-48"
-                />
-              </div>
-              
-              <p className="text-gray-600 text-sm mb-3">Scan the QR code or copy the address to pay:</p>
-              
-              <div className="bg-gray-50 rounded-lg p-3 mb-4 flex items-center justify-between">
-                <span className="text-gray-800 text-sm font-mono">bc1qu7dfs19kp3u4nr9ssgcngp1ah3laseu7pfm</span>
-                <button
-                  onClick={copyAddress}
-                  className="ml-2 text-orange-500 hover:text-orange-600"
-                >
-                  {copied ? <Check size={20} /> : <Copy size={20} />}
-                </button>
-              </div>
-              
-              <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-3 mb-4 flex items-start gap-2">
-                <span className="text-yellow-600 text-lg">⚠️</span>
-                <p className="text-yellow-800 text-xs text-left">
-                  Please ensure you send the exact amount to avoid delays or issues.
-                </p>
-              </div>
-              
-              <div className="bg-orange-50 rounded-lg p-4">
-                <p className="text-gray-700 text-sm mb-2">We're watching the network for your transaction.</p>
-                <p className="text-orange-600 font-bold text-3xl">{formatTime(timer)}</p>
-              </div>
+{step === 4 && (
+  <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+    <div className="bg-white rounded-[2rem] w-full max-w-md relative shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-300">
+      
+      {/* Back Button - Positioned absolutely inside the card */}
+      <button 
+        onClick={() => setStep(2)}
+        className="absolute top-6 left-6 text-gray-400 hover:text-gray-600 transition-colors z-10"
+      >
+        <span className="text-xl">← Back</span>
+      </button>
+
+      <div className="flex flex-col">
+        {/* Main Content Area */}
+        <div className="p-8 md:p-10 text-center">
+          
+          {/* Header with Icon */}
+          <div className="flex items-center justify-center gap-3 mb-1 mt-4">
+            <div className="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center text-white text-lg font-bold">
+              ₿
+            </div>
+            <h3 className="text-xl font-black tracking-tighter uppercase text-gray-800">
+              Pay with Bitcoin
+            </h3>
+          </div>
+          
+          <p className="text-[10px] text-gray-400 font-black uppercase tracking-widest mb-8">
+            Send exactly the amount shown to avoid delays
+          </p>
+
+          {/* QR Code Container */}
+          <div className="bg-white p-5 rounded-3xl inline-block mb-8 shadow-xl border border-gray-100 transition-transform hover:scale-105 duration-300">
+            {/* Using your existing img tag structure but styled like the new design */}
+            <img 
+              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='white' width='100' height='100'/%3E%3Cpath fill='black' d='M10,10h5v5h-5zM20,10h5v5h-5zM25,10h5v5h-5zM30,10h5v5h-5zM40,10h5v5h-5zM60,10h5v5h-5zM70,10h5v5h-5zM75,10h5v5h-5zM80,10h5v5h-5zM85,10h5v5h-5zM10,15h5v5h-5zM40,15h5v5h-5zM50,15h5v5h-5zM60,15h5v5h-5zM85,15h5v5h-5zM10,20h5v5h-5zM20,20h5v5h-5zM25,20h5v5h-5zM30,20h5v5h-5zM40,20h5v5h-5zM50,20h5v5h-5zM60,20h5v5h-5zM70,20h5v5h-5zM75,20h5v5h-5zM80,20h5v5h-5zM85,20h5v5h-5zM10,25h5v5h-5zM20,25h5v5h-5zM25,25h5v5h-5zM30,25h5v5h-5zM40,25h5v5h-5zM60,25h5v5h-5zM70,25h5v5h-5zM75,25h5v5h-5zM80,25h5v5h-5zM85,25h5v5h-5zM10,30h5v5h-5zM20,30h5v5h-5zM25,30h5v5h-5zM30,30h5v5h-5zM40,30h5v5h-5zM60,30h5v5h-5zM70,30h5v5h-5zM75,30h5v5h-5zM80,30h5v5h-5zM85,30h5v5h-5zM10,35h5v5h-5zM40,35h5v5h-5zM60,35h5v5h-5zM85,35h5v5h-5zM10,40h5v5h-5zM20,40h5v5h-5zM25,40h5v5h-5zM30,40h5v5h-5zM40,40h5v5h-5zM60,40h5v5h-5zM70,40h5v5h-5zM75,40h5v5h-5zM80,40h5v5h-5zM85,40h5v5h-5zM50,45h5v5h-5zM55,45h5v5h-5zM10,50h5v5h-5zM20,50h5v5h-5zM35,50h5v5h-5zM40,50h5v5h-5zM45,50h5v5h-5zM55,50h5v5h-5zM65,50h5v5h-5zM75,50h5v5h-5zM85,50h5v5h-5zM10,55h5v5h-5zM40,55h5v5h-5zM45,55h5v5h-5zM50,55h5v5h-5zM70,55h5v5h-5zM75,55h5v5h-5zM80,55h5v5h-5zM10,60h5v5h-5zM20,60h5v5h-5zM25,60h5v5h-5zM30,60h5v5h-5zM40,60h5v5h-5zM50,60h5v5h-5zM55,60h5v5h-5zM60,60h5v5h-5zM70,60h5v5h-5zM80,60h5v5h-5zM85,60h5v5h-5zM10,65h5v5h-5zM30,65h5v5h-5zM40,65h5v5h-5zM50,65h5v5h-5zM55,65h5v5h-5zM65,65h5v5h-5zM70,65h5v5h-5zM75,65h5v5h-5zM85,65h5v5h-5zM10,70h5v5h-5zM20,70h5v5h-5zM25,70h5v5h-5zM30,70h5v5h-5zM40,70h5v5h-5zM60,70h5v5h-5zM70,70h5v5h-5zM75,70h5v5h-5zM80,70h5v5h-5zM85,70h5v5h-5zM10,75h5v5h-5zM40,75h5v5h-5zM50,75h5v5h-5zM60,75h5v5h-5zM70,75h5v5h-5zM85,75h5v5h-5zM10,80h5v5h-5zM20,80h5v5h-5zM25,80h5v5h-5zM30,80h5v5h-5zM40,80h5v5h-5zM50,80h5v5h-5zM60,80h5v5h-5zM70,80h5v5h-5zM75,80h5v5h-5zM80,80h5v5h-5zM85,80h5v5h-5zM10,85h5v5h-5zM85,85h5v5h-5z'/%3E%3C/svg%3E"
+              alt="QR Code"
+              className="w-40 h-40 md:w-48 md:h-48"
+            />
+          </div>
+
+          {/* Address Box */}
+          <div className="bg-gray-50 p-4 rounded-xl border border-dashed border-gray-200 group relative">
+            <p className="text-[9px] text-gray-400 font-black uppercase mb-1 tracking-widest">
+              Wallet Address
+            </p>
+            <div className="flex items-center justify-center gap-2">
+              <p className="text-[11px] font-mono font-bold break-all text-gray-600">
+                bc1qu7dfs19kp3u4nr9ssgcngp1ah3laseu7pfm
+              </p>
+              <button
+                onClick={copyAddress}
+                className="flex items-center"
+              >
+                {copied ? (
+                  <Check size={16} className="text-green-500" />
+                ) : (
+                  <Copy size={16} className="text-gray-400 hover:text-orange-500 transition-colors" />
+                )}
+              </button>
             </div>
           </div>
         </div>
-      )}
+
+        {/* Footer / Timer */}
+        <div className="bg-[#f8f9fa] p-5 flex items-center justify-center gap-3 border-t border-gray-100">
+          <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
+          <span className="text-[11px] font-black text-gray-500 uppercase tracking-[0.15em]">
+            Expires in: <span className="text-red-500 font-mono">{formatTime(timer)}</span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+)}
 
       {/* Reviews Modal */}
       {showReviewsModal && selectedProduct && (
