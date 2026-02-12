@@ -340,8 +340,8 @@ const marketData = [
       )}
 
       {/* STEP 2: Payment Selection Modal */}
-      {(step === 2 || step === 3) && (
-        <div className={`fixed inset-0 bg-gray-100 flex items-center justify-center z-50 p-4 ${step === 3 ? 'blur-sm' : ''}`}>
+      {step === 2 && (
+        <div className="fixed inset-0 bg-gray-100 flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-2xl p-8 w-full max-w-md relative shadow-2xl">
             <h2 className="text-gray-900 font-bold text-2xl mb-6 text-center">Select a Payment Option</h2>
             <div className="space-y-3 mb-6">
@@ -397,7 +397,7 @@ const marketData = [
 
       {/* STEP 3: Tutorial Modal */}
       {step === 3 && (
-        <div className="fixed inset-0 bg-gray-900/30 backdrop-blur-sm flex items-center justify-center z-[60] p-4">
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-[60] p-4">
           <div className="bg-white rounded-2xl p-6 w-full max-w-md relative shadow-2xl">
             <button 
               onClick={() => setStep(2)}
@@ -519,7 +519,7 @@ const marketData = [
 )}
 
       {/* Reviews Modal */}
-      {showReviewsModal && selectedProduct && (
+      {/* {showReviewsModal && selectedProduct && (
         <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-2xl p-6 w-full max-w-md max-h-[600px] overflow-y-auto relative text-black shadow-2xl">
             <button 
@@ -543,7 +543,7 @@ const marketData = [
             </div>
           </div>
         </div>
-      )}
+      )} */}
 
       {/* Floating Menu */}
       <div className="fixed right-8 bottom-20 flex flex-col gap-3 items-center z-50">
