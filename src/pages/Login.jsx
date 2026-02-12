@@ -67,7 +67,7 @@ const Login = () => {
             </form>
 
             <p className="text-center text-gray-400 mt-6">
-              New? <Link to="/register" className="text-[var(--color-mbutton)] hover:text-primary">Create your account →</Link>
+              New? <Link to="/signup" className="text-[var(--color-mbutton)] hover:text-primary">Create your account →</Link>
             </p>
           </div>
         </div>
