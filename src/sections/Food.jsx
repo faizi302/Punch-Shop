@@ -1,12 +1,17 @@
 // Food.jsx
 import React from 'react';
 import ProductCard from '../components/ProductCard';
+import uberEatsImg from '../assets/food/uber eats.gif';
+import doorDashImg from '../assets/food/doordash.gif';
+import instacartImg from '../assets/food/instacart.gif';
+
 
 const sectionData = [
-  { id: "fod_01", title: "Uber Eats Accounts", price: "2.00", stock: 50, image: "src/assets/food/uber eats.gif" },
-  { id: "fod_02", title: "DoorDash Accounts", price: "2.00", stock: 8, image: "src/assets/food/doordash.gif" },
-  { id: "fod_03", title: "Instacart Accounts", price: "1.00", stock: 15, image: "src/assets/food/instacart.gif" },
+  { id: "fod_01", title: "Uber Eats Accounts", price: "2.00", stock: 50, image: uberEatsImg },
+  { id: "fod_02", title: "DoorDash Accounts", price: "2.00", stock: 8, image: doorDashImg },
+  { id: "fod_03", title: "Instacart Accounts", price: "1.00", stock: 15, image: instacartImg },
 ];
+
 
 const Food = ({ openModal }) => {
   return (

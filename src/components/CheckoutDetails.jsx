@@ -5,6 +5,7 @@ import {
     ChevronRight, X, ShieldCheck, Clock, Send, UserRoundSearch, Search, Copy
 } from 'lucide-react';
 import QRCode from "react-qr-code";
+import heroLogo from '../assets/herologo.gif';
 
 
 
@@ -69,7 +70,7 @@ const CheckoutDetails = () => {
             {/* 1. HEADER */}
             <header className="p-6 md:p-10 flex justify-center w-full bg-[image:var(--color-mixed)]">
                 <div className="w-full max-w-4xl">
-                    <img src="/src/assets/herologo.gif" alt="Banner" className="w-full h-auto rounded-lg shadow-2xl" />
+                    <img src={heroLogo} alt="Banner" className="w-full h-auto rounded-lg shadow-2xl" />
                 </div>
             </header>
 

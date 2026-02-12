@@ -1,10 +1,16 @@
 import React from 'react';
 import ProductCard from '../components/ProductCard';
+import cashAppImg from '../assets/best sellers/id verified.avif';
+import dumpsImg from '../assets/best sellers/dumps.avif';
+import visaImg from '../assets/best sellers/visa.avif';
+
+
 const sectionData = [
-  { id: "bst_01", title: "ID Verified Cash App", price: "30.00", stock: 150, image: "src/assets/best sellers/id verified.avif" },
-  { id: "bst_02", title: "DUMPS for Cloning Cards", price: "18.00", stock: 42, image: "src/assets/best sellers/dumps.avif" },
-  { id: "bst_03", title: "High Balance (VISA)", price: "18.00", stock: 42, image: "src/assets/best sellers/visa.avif" }
+  { id: "bst_01", title: "ID Verified Cash App", price: "30.00", stock: 150, image: cashAppImg },
+  { id: "bst_02", title: "DUMPS for Cloning Cards", price: "18.00", stock: 42, image: dumpsImg },
+  { id: "bst_03", title: "High Balance (VISA)", price: "18.00", stock: 42, image: visaImg }
 ];
+
 
 const BestSellers = ({ openModal }) => {
   return (

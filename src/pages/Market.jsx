@@ -3,6 +3,19 @@ import React, { useState, useEffect } from 'react';
 import MarketCard from '../components/MarketCard';
 import { Send, Headphones, LogIn, Star, X, MessageSquareMore, Copy, Check } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import MarketHeader from '../components/MarketHeader';
+// product images
+import mastercardImg from '../assets/Hot_products/masetcard.webp';
+import visaImg from '../assets/Hot_products/visa.gif';
+import chimeImg from '../assets/Hot_products/chime.gif';
+
+// seller avatars
+import revImg1 from '../assets/reviews/rev-img.jpg';
+import revImg2 from '../assets/reviews/rev-img2.jpg';
+import revImg3 from '../assets/reviews/rev-img3.avif';
+import floatImg from '../assets/float-img.png';
+
+
 
 const Market = () => {
   const [visibleCount, setVisibleCount] = useState(10);
@@ -35,164 +48,165 @@ const Market = () => {
   };
 
   // Comprehensive market data array
-  const marketData = [
-    {
-      id: 'prod1',
-      title: 'Mastercard CC',
-      description: 'CC with $8,000 Balance.',
-      price: '150.00',
-      image: 'src/assets/Hot_products/masetcard.webp',
-      isHot: true,
-      isTrusted: false,
-      sellerAvatar: 'src/assets/reviews/rev-img.jpg',
-      sellerName: 'Brainsclub',
-      reviewCount: 1331,
-    },
-    {
-      id: 'prod2',
-      title: 'Mastercard CC',
-      description: 'CC with $8,000 Balance.',
-      price: '150.00',
-      image: 'src/assets/Hot_products/visa.gif',
-      isHot: true,
-      isTrusted: false,
-      sellerAvatar: 'src/assets/reviews/rev-img2.jpg',
-      sellerName: 'Brainsclub',
-      reviewCount: 1331,
-    },
-    {
-      id: 'prod3',
-      title: 'Visa CC',
-      description: 'Comes with instructions. Estimated Balance: $3,800',
-      price: '400.00',
-      image: 'src/assets/Hot_products/visa.gif',
-      isHot: false,
-      isTrusted: false,
-      sellerAvatar: 'src/assets/reviews/rev-img3.avif',
-      sellerName: 'punch.atshop.io',
-      reviewCount: 1331,
-    },
-    {
-      id: 'prod4',
-      title: 'Mastercard CC',
-      description: 'CC with $8,000 Balance.',
-      price: '150.00',
-      image: 'src/assets/Hot_products/chime.gif',
-      isHot: true,
-      isTrusted: false,
-      sellerAvatar: 'src/assets/reviews/rev-img.jpg',
-      sellerName: 'Brainsclub',
-      reviewCount: 1331,
-    },
-    {
-      id: 'prod5',
-      title: 'Visa CC',
-      description: 'Comes with instructions. Estimated Balance: $3,800',
-      price: '400.00',
-      image: 'src/assets/Hot_products/visa.gif',
-      isHot: false,
-      isTrusted: false,
-      sellerAvatar: 'src/assets/reviews/rev-img2.jpg',
-      sellerName: 'punch.atshop.io',
-      reviewCount: 1331,
-    },
-    {
-      id: 'prod6',
-      title: 'Visa CC',
-      description: 'Comes with instructions. Estimated Balance: $3,800',
-      price: '400.00',
-      image: 'src/assets/Hot_products/visa.gif',
-      isHot: false,
-      isTrusted: false,
-      sellerAvatar: 'src/assets/reviews/rev-img3.avif',
-      sellerName: 'punch.atshop.io',
-      reviewCount: 1331,
-    },
-    {
-      id: 'prod7',
-      title: 'Visa CC',
-      description: 'Comes with instructions. Estimated Balance: $3,800',
-      price: '400.00',
-      image: 'src/assets/Hot_products/visa.gif',
-      isHot: false,
-      isTrusted: false,
-      sellerAvatar: 'src/assets/reviews/rev-img.jpg',
-      sellerName: 'punch.atshop.io',
-      reviewCount: 1331,
-    },
-    {
-      id: 'prod8',
-      title: 'Visa CC',
-      description: 'Comes with instructions. Estimated Balance: $3,800',
-      price: '400.00',
-      image: 'src/assets/Hot_products/visa.gif',
-      isHot: false,
-      isTrusted: false,
-      sellerAvatar: 'src/assets/reviews/rev-img2.jpg',
-      sellerName: 'punch.atshop.io',
-      reviewCount: 1331,
-    },
-    {
-      id: 'prod9',
-      title: 'Wells Fargo Bank Login',
-      description: 'WF Bank Login with $2,100 balance. Includes CC, ID and Login',
-      price: '190.00',
-      image: 'src/assets/Hot_products/masetcard.webp',
-      isHot: true,
-      isTrusted: true,
-      sellerAvatar: 'src/assets/reviews/rev-img3.avif',
-      sellerName: 'punch.atshop.io',
-      reviewCount: 1331,
-    },
-    {
-      id: 'prod10',
-      title: 'Wells Fargo Bank Login',
-      description: 'WF Bank Login with $2,100 balance. Includes CC, ID and Login',
-      price: '190.00',
-      image: 'src/assets/Hot_products/masetcard.webp',
-      isHot: true,
-      isTrusted: true,
-      sellerAvatar: 'src/assets/reviews/rev-img.jpg',
-      sellerName: 'punch.atshop.io',
-      reviewCount: 1331,
-    },
-    {
-      id: 'prod11',
-      title: 'Wells Fargo Bank Login',
-      description: 'WF Bank Login with $2,100 balance. Includes CC, ID and Login',
-      price: '190.00',
-      image: 'src/assets/Hot_products/visa.gif',
-      isHot: true,
-      isTrusted: true,
-      sellerAvatar: 'src/assets/reviews/rev-img2.jpg',
-      sellerName: 'punch.atshop.io',
-      reviewCount: 1331,
-    },
-    {
-      id: 'prod12',
-      title: 'Wells Fargo Bank Login',
-      description: 'WF Bank Login with $2,100 balance. Includes CC, ID and Login',
-      price: '190.00',
-      image: 'src/assets/Hot_products/chime.gif',
-      isHot: true,
-      isTrusted: true,
-      sellerAvatar: 'src/assets/reviews/rev-img3.avif',
-      sellerName: 'punch.atshop.io',
-      reviewCount: 1331,
-    },
-    {
-      id: 'prod13',
-      title: 'Wells Fargo Bank Login',
-      description: 'WF Bank Login with $2,100 balance. Includes CC, ID and Login',
-      price: '190.00',
-      image: 'src/assets/Hot_products/visa.gif',
-      isHot: true,
-      isTrusted: true,
-      sellerAvatar: 'src/assets/reviews/rev-img.jpg',
-      sellerName: 'punch.atshop.io',
-      reviewCount: 1331,
-    },
-  ];
+const marketData = [
+  {
+    id: 'prod1',
+    title: 'Mastercard CC',
+    description: 'CC with $8,000 Balance.',
+    price: '150.00',
+    image: mastercardImg,
+    isHot: true,
+    isTrusted: false,
+    sellerAvatar: revImg1,
+    sellerName: 'Brainsclub',
+    reviewCount: 1331,
+  },
+  {
+    id: 'prod2',
+    title: 'Mastercard CC',
+    description: 'CC with $8,000 Balance.',
+    price: '150.00',
+    image: visaImg,
+    isHot: true,
+    isTrusted: false,
+    sellerAvatar: revImg2,
+    sellerName: 'Brainsclub',
+    reviewCount: 1331,
+  },
+  {
+    id: 'prod3',
+    title: 'Visa CC',
+    description: 'Comes with instructions. Estimated Balance: $3,800',
+    price: '400.00',
+    image: visaImg,
+    isHot: false,
+    isTrusted: false,
+    sellerAvatar: revImg3,
+    sellerName: 'punch.atshop.io',
+    reviewCount: 1331,
+  },
+  {
+    id: 'prod4',
+    title: 'Mastercard CC',
+    description: 'CC with $8,000 Balance.',
+    price: '150.00',
+    image: chimeImg,
+    isHot: true,
+    isTrusted: false,
+    sellerAvatar: revImg1,
+    sellerName: 'Brainsclub',
+    reviewCount: 1331,
+  },
+  {
+    id: 'prod5',
+    title: 'Visa CC',
+    description: 'Comes with instructions. Estimated Balance: $3,800',
+    price: '400.00',
+    image: visaImg,
+    isHot: false,
+    isTrusted: false,
+    sellerAvatar: revImg2,
+    sellerName: 'punch.atshop.io',
+    reviewCount: 1331,
+  },
+  {
+    id: 'prod6',
+    title: 'Visa CC',
+    description: 'Comes with instructions. Estimated Balance: $3,800',
+    price: '400.00',
+    image: visaImg,
+    isHot: false,
+    isTrusted: false,
+    sellerAvatar: revImg3,
+    sellerName: 'punch.atshop.io',
+    reviewCount: 1331,
+  },
+  {
+    id: 'prod7',
+    title: 'Visa CC',
+    description: 'Comes with instructions. Estimated Balance: $3,800',
+    price: '400.00',
+    image: visaImg,
+    isHot: false,
+    isTrusted: false,
+    sellerAvatar: revImg1,
+    sellerName: 'punch.atshop.io',
+    reviewCount: 1331,
+  },
+  {
+    id: 'prod8',
+    title: 'Visa CC',
+    description: 'Comes with instructions. Estimated Balance: $3,800',
+    price: '400.00',
+    image: visaImg,
+    isHot: false,
+    isTrusted: false,
+    sellerAvatar: revImg2,
+    sellerName: 'punch.atshop.io',
+    reviewCount: 1331,
+  },
+  {
+    id: 'prod9',
+    title: 'Wells Fargo Bank Login',
+    description: 'WF Bank Login with $2,100 balance. Includes CC, ID and Login',
+    price: '190.00',
+    image: mastercardImg,
+    isHot: true,
+    isTrusted: true,
+    sellerAvatar: revImg3,
+    sellerName: 'punch.atshop.io',
+    reviewCount: 1331,
+  },
+  {
+    id: 'prod10',
+    title: 'Wells Fargo Bank Login',
+    description: 'WF Bank Login with $2,100 balance. Includes CC, ID and Login',
+    price: '190.00',
+    image: mastercardImg,
+    isHot: true,
+    isTrusted: true,
+    sellerAvatar: revImg1,
+    sellerName: 'punch.atshop.io',
+    reviewCount: 1331,
+  },
+  {
+    id: 'prod11',
+    title: 'Wells Fargo Bank Login',
+    description: 'WF Bank Login with $2,100 balance. Includes CC, ID and Login',
+    price: '190.00',
+    image: visaImg,
+    isHot: true,
+    isTrusted: true,
+    sellerAvatar: revImg2,
+    sellerName: 'punch.atshop.io',
+    reviewCount: 1331,
+  },
+  {
+    id: 'prod12',
+    title: 'Wells Fargo Bank Login',
+    description: 'WF Bank Login with $2,100 balance. Includes CC, ID and Login',
+    price: '190.00',
+    image: chimeImg,
+    isHot: true,
+    isTrusted: true,
+    sellerAvatar: revImg3,
+    sellerName: 'punch.atshop.io',
+    reviewCount: 1331,
+  },
+  {
+    id: 'prod13',
+    title: 'Wells Fargo Bank Login',
+    description: 'WF Bank Login with $2,100 balance. Includes CC, ID and Login',
+    price: '190.00',
+    image: visaImg,
+    isHot: true,
+    isTrusted: true,
+    sellerAvatar: revImg1,
+    sellerName: 'punch.atshop.io',
+    reviewCount: 1331,
+  },
+];
+
 
   const handleShowMore = () => {
     setVisibleCount(prev => Math.min(prev + 10, marketData.length));
@@ -249,20 +263,7 @@ const Market = () => {
   return (
     <div className="min-h-screen bg-[var(--color-market)] text-white flex flex-col">
       {/* Sticky Header */}
-      <header className="sticky top-0 z-40 bg-[var(--color-mheader)] py-4 px-6 flex justify-between items-center">
-        <img src="src/assets/pine_apple.png" alt="Punch" className="h-10" />
-        <div className="flex gap-6 text-sm font-medium">
-          <Link to="https://t.me/mvpwins" className="flex items-center gap-2 hover:text-gray-300 transition-colors">
-            <Send size={16} /> Telegram
-          </Link>
-          <Link to="/support" className="flex items-center gap-2 hover:text-gray-300 transition-colors">
-            <Headphones size={16} /> Support
-          </Link>
-          <Link to="/login" className="flex items-center gap-2 hover:text-gray-300 transition-colors">
-            <LogIn size={16} /> Login
-          </Link>
-        </div>
-      </header>
+      <MarketHeader/>
 
       {/* Main Content with proper padding */}
       <main className="flex-1 px-4 py-6">
@@ -441,8 +442,8 @@ const Market = () => {
 
       {/* STEP 4: QR Modal */}
       {step === 4 && (
-        <div className="fixed  inset-0 bg-gray-100  py-10 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-2xl p-8 max-w-md relative shadow-2xl">
+        <div className="fixed inset-0 bg-gray-100 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-2xl p-8 w-full max-w-md fixed shadow-2xl max-h-[80vh] overflow-y-auto">
             <button 
               onClick={() => setStep(2)}
               className="absolute top-6 left-6 text-blue-600 hover:text-blue-700 text-sm font-medium"
@@ -522,7 +523,7 @@ const Market = () => {
       {/* Floating Menu */}
       <div className="fixed right-8 bottom-20 flex flex-col gap-3 items-center z-50">
         <button className="bg-[#601db2] hover:bg-[#601db2] p-4 rounded-full shadow-xl transition-colors">
-          <img src='src/assets/float-img.png' className="w-8 h-8" />
+          <img src={floatImg} className="w-8 h-8" />
         </button>
       </div>
       <div className="fixed right-6 bottom-6 flex flex-col gap-3 items-center size-10 z-50">

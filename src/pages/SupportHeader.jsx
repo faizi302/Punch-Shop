@@ -2,6 +2,10 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { MessageSquareMore } from 'lucide-react';
+import pineappleImg from '../assets/pine_apple.png';
+import floatImg from '../assets/float-img.png';
+
+
 
 const SupportHeader = () => {
   const [openFaq, setOpenFaq] = useState(null);
@@ -47,7 +51,7 @@ const SupportHeader = () => {
     <div className="min-h-screen bg-[var(--color-market)] text-white flex flex-col">
       {/* Header with Go Back button */}
       <header className="py-6 px-6 flex justify-between items-center bg-[#1b143d] mb-3">
-        <img src="src/assets/pine_apple.png" alt="Punch" className="h-10" />
+        <img src={pineappleImg}  alt="Punch" className="h-10" />
         <Link
           to="/market"
           className="text-white hover:text-[var(--color-mbutton)] transition-colors text-sm "
@@ -119,7 +123,7 @@ const SupportHeader = () => {
       {/* Floating Support Button */}
       <div className="fixed right-8 bottom-24 flex flex-col gap-3 items-center z-50">
         <button className="bg-[#601db2] hover:bg-[#601db2] p-4 rounded-full shadow-xl transition-colors">
-          <img src='src/assets/float-img.png' className="w-7 h-7" />
+          <img src={floatImg} className="w-7 h-7" />
         </button>
       </div>
 

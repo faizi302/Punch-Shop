@@ -1,6 +1,16 @@
 // Bank.jsx
 import React from 'react';
 import ProductCard from '../components/ProductCard';
+import pncImg from '../assets/Bank/pnc.gif';
+import chaseImg from '../assets/Bank/chase.gif';
+import bofaImg from '../assets/Bank/bofa bank.gif';
+import tdImg from '../assets/Bank/tdbank.gif';
+import sofiImg from '../assets/Bank/sofi.gif';
+import citiImg from '../assets/Bank/citi.gif';
+import wellsFargoImg from '../assets/Bank/wells fargo.gif';
+import capitalOneImg from '../assets/Bank/capital bank.gif';
+import bmoImg from '../assets/Bank/bmo.gif';
+
 /**
  * Bank Section Component
  * Displays a grid of banking-related products using the common ProductCard
@@ -11,65 +21,67 @@ const sectionData = [
     title: "PNC Bank", 
     price: "80.00", 
     stock: 12, 
-    image: "src/assets/Bank/pnc.gif" 
+    image: pncImg
   },
   { 
     id: "bnk_02", 
     title: "Chase Bank", 
     price: "200.00", 
     stock: 5, 
-    image: "src/assets/Bank/chase.gif" 
+    image: chaseImg
   },
   { 
     id: "bnk_03", 
     title: "BofA Bank", 
     price: "160.00", 
     stock: 22, 
-    image: "src/assets/Bank/bofa bank.gif" // Assuming image name
+    image: bofaImg
   },
   { 
     id: "bnk_04", 
     title: "TD", 
     price: "80.00", 
     stock: 2, 
-    image: "src/assets/Bank/tdbank.gif" 
+    image: tdImg
   },
   { 
     id: "bnk_05", 
     title: "SoFi", 
     price: "100.00", 
     stock: 15, 
-    image: "src/assets/Bank/sofi.gif" 
+    image: sofiImg
   },
   { 
     id: "bnk_06", 
     title: "Citi", 
     price: "90.00", 
     stock: 15, 
-    image: "src/assets/Bank/citi.gif" 
+    image: citiImg
   },
   { 
     id: "bnk_07", 
     title: "Wells Fargo Bank", 
     price: "100.00", 
     stock: 10, 
-    image: "src/assets/Bank/wells fargo.gif" // Assuming image name
+    image: wellsFargoImg
   },
   { 
     id: "bnk_08", 
     title: "Capital One Bank", 
     price: "120.00", 
     stock: 8, 
-    image: "src/assets/Bank/capital bank.gif" // Assuming image name
+    image: capitalOneImg
   },
   { 
     id: "bnk_09", 
     title: "BMO Bank", 
     price: "140.00", 
     stock: 6, 
-    image: "src/assets/Bank/bmo.gif" // Assuming image name
+    image: bmoImg
   }
 ];
+``
+
 
 const Bank = ({ openModal }) => {
   return (

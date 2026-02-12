@@ -1,15 +1,23 @@
 // Shopping.jsx
 import React from 'react';
 import ProductCard from '../components/ProductCard';
+import ebayImg from '../assets/shopping/ebay accounts.gif';
+import amazonImg from '../assets/shopping/amazon.gif';
+import walmartImg from '../assets/shopping/walmert.gif';
+import stockXImg from '../assets/shopping/stockX Accounts.gif';
+import turoImg from '../assets/shopping/turo.gif';
+import airbnbImg from '../assets/shopping/airbnb.gif';
+
 
 const sectionData = [
-  { id: "shp_01", title: "eBay Accounts", price: "80.00", stock: 7, image: "src/assets/shopping/ebay accounts.gif" },
-  { id: "shp_02", title: "Amazon Accounts", price: "45.00", stock: 32, image: "src/assets/shopping/amazon.gif" },
-  { id: "shp_03", title: "Walmart Accounts", price: "75.00", stock: 15, image: "src/assets/shopping/walmert.gif" },
-  { id: "shp_04", title: "StockX Accounts", price: "75.00", stock: 15, image: "src/assets/shopping/stockX Accounts.gif" },
-  { id: "shp_05", title: "Turo Accounts", price: "75.00", stock: 15, image: "src/assets/shopping/turo.gif" },
-  { id: "shp_06", title: "Airbnb Accounts", price: "75.00", stock: 15, image: "src/assets/shopping/airbnb.gif" },
+  { id: "shp_01", title: "eBay Accounts", price: "80.00", stock: 7, image: ebayImg },
+  { id: "shp_02", title: "Amazon Accounts", price: "45.00", stock: 32, image: amazonImg },
+  { id: "shp_03", title: "Walmart Accounts", price: "75.00", stock: 15, image: walmartImg },
+  { id: "shp_04", title: "StockX Accounts", price: "75.00", stock: 15, image: stockXImg },
+  { id: "shp_05", title: "Turo Accounts", price: "75.00", stock: 15, image: turoImg },
+  { id: "shp_06", title: "Airbnb Accounts", price: "75.00", stock: 15, image: airbnbImg },
 ];
+
 
 const Shopping = ({ openModal }) => {
   return (

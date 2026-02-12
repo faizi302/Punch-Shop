@@ -1,12 +1,17 @@
 // Social.jsx
 import React from 'react';
 import ProductCard from '../components/ProductCard';
+import snapchatImg from '../assets/social/snapchat.gif';
+import yahooMailImg from '../assets/social/yahoo mails.gif';
+import onlyFansImg from '../assets/social/only fans login.gif';
+
 
 const sectionData = [
-  { id: "soc_01", title: "Snapchat Accounts", price: "2.00", stock: 99, image: "src/assets/social/snapchat.gif" },
-  { id: "soc_02", title: "Yahoo Mail Accounts", price: "2.00", stock: 12, image: "src/assets/social/yahoo mails.gif" },
-  { id: "soc_03", title: "OnlyFans Logins", price: "1.00", stock: 4, image: "src/assets/social/only fans login.gif" },
+  { id: "soc_01", title: "Snapchat Accounts", price: "2.00", stock: 99, image: snapchatImg },
+  { id: "soc_02", title: "Yahoo Mail Accounts", price: "2.00", stock: 12, image: yahooMailImg },
+  { id: "soc_03", title: "OnlyFans Logins", price: "1.00", stock: 4, image: onlyFansImg },
 ];
+
 
 const Social = ({ openModal }) => {
   return (
